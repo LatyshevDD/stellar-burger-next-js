@@ -1,6 +1,5 @@
-import { BurgerIcon, Logo } from '@ya.praktikum/react-developer-burger-ui-components'
+import { BurgerIcon, Logo, ListIcon, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import Link from 'next/link'
-import text_styles from '../../styles/text_styles.module.css'
 
 export default function AppHeader() {
 
@@ -14,7 +13,21 @@ export default function AppHeader() {
               Конструктор
             </p>
           </Link>
-
+          <Link href='/' className='flex transition-opacity hover:opacity-60 gap-2'>
+            <ListIcon type="primary" />
+            <p className="text text_type_main-default">
+              Лента заказов
+            </p>
+          </Link>
+          <Link href='/' className='transition-opacity hover:opacity-60 gap-2'>
+            <Logo />
+          </Link>
+          <Link href='/' className='flex transition-opacity hover:opacity-60 gap-2'>
+            <ProfileIcon type="primary" />
+            <p className="text text_type_main-default ml-2">
+              Личный кабинет
+            </p>
+          </Link>
         </nav>
       </header>
     </>
