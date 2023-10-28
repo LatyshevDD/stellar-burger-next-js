@@ -1,0 +1,11 @@
+/* text styles */
+
+.text_default {
+  font-family: var(--font-jetBrains-mono);
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
