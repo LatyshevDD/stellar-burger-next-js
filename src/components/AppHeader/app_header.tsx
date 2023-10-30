@@ -12,6 +12,7 @@ export default function AppHeader() {
   const pathname = usePathname()
 
   const [burgerMenu, setBurgerMenu] = useState(false)
+  const [profileBurgerMenu, setProfileBurgerMenu] = useState(false)
 
   return (
     <>
@@ -58,7 +59,28 @@ export default function AppHeader() {
                 Личный кабинет
               </p>
             </Link>
-            <ArrowDownIcon type={pathname === '/profile' ? 'primary' : 'secondary'} />
+            {
+              profileBurgerMenu ?
+              <ArrowUpIcon type={pathname === '/profile' ? 'primary' : 'secondary'} onClick={() => setProfileBurgerMenu(false)}/> :
+              <ArrowDownIcon type={pathname === '/profile' ? 'primary' : 'secondary'} onClick={() => setProfileBurgerMenu(true)}/>
+            }
+          </div>
+          <div className={`${profileBurgerMenu ? '' : 'h-0'} flex flex-col overflow-hidden transition-all`}>
+            <Link href='/profile'>
+              <p className={`my-2.5 text_type_main-default ml-10 ${pathname === '/profile' ? 'text-[rgba(242,242,243,1)]' : 'text-[rgba(133,133,173,1)]'} `}>
+                Профиль
+              </p>
+            </Link>
+            <Link href='/profile/orders'>
+              <p className={`my-2.5 text_type_main-default ml-10 ${pathname === '/profile/orders' ? 'text-[rgba(242,242,243,1)]' : 'text-[rgba(133,133,173,1)]'} `}>
+                История заказов
+              </p>
+            </Link>
+            <Link href='/'>
+              <p className='my-2.5 text_type_main-default ml-10 text-[rgba(133,133,173,1)]'>
+                Выход
+              </p>
+            </Link>
           </div>
           <Link href='/' className='flex my-3.5 gap-2'>
             <BurgerIcon type={pathname === '/' ? 'primary' : 'secondary'} />
