@@ -36,7 +36,7 @@ export default function AppHeader() {
             </p>
           </Link>
         </nav>
-        <nav className='flex lg:hidden justify-bitween w-[83%] mt-3 mb-3'>
+        <nav className='flex lg:hidden items-center w-[83%] mt-3 mb-3 gap-2'>
           <Image src={LogoSmal} alt='Логотип Бургер'/>
           <MenuIcon type='primary' />
         </nav>
