@@ -14,13 +14,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ru">
-      <body className='container mx-auto'>
-        <Providers>
-          <AppHeader />
-          {children}
-        </Providers>
-      </body>
-    </html>
+    <Providers>
+      <html lang="ru">
+        <body className='container mx-auto'>
+          
+            <AppHeader />
+            {children}
+          
+        </body>
+      </html>
+    </Providers>
   )
 }

@@ -15,5 +15,5 @@ export default function Template({ children }: { children: React.ReactNode }) {
       .catch(e => dispatch(setError({hasError: true, errorMessage: e})))
   }, [])
 
-  return <div>{children}</div>
+  return <>{children}</>
 }
