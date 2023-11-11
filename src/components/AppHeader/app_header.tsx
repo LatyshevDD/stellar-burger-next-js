@@ -45,7 +45,7 @@ export default function AppHeader() {
           <MenuIcon type='primary' onClick={() => setBurgerMenu(!burgerMenu)} />
         </nav>
       </header>
-      <nav className={`${burgerMenu ? 'translate-y-0' : 'translate-y-[-200%]'} flex flex-col pt-4 px-2 z-10 h-screen transition-all absolute top-0 w-full`}>
+      <nav className={`${burgerMenu ? 'translate-y-0' : 'translate-y-[-200%]'} flex flex-col pt-4 px-2 z-10 h-screen transition-all absolute top-0 w-full bg-[#131316]`}>
           <div className='flex justify-between gap-2'>
             <p className="text text_type_main-medium">
               Меню

@@ -41,10 +41,10 @@ export default function BurgerIngredients() {
 
   return (
     <section className="flex flex-col">
-      <p className="text text_type_main-large mt-10 mb-5">
+      <p className="font-jet text-center leading-8 md:text-left md:leading-10 text-[28px] md:text-[36px] mt-4 mb-2 md:mt-10 md:mb-5">
         Соберите бургер
       </p>
-      <nav className="grid grid-cols-3">
+      <nav className="grid w-full grid-cols-3">
       <Tab 
           value={BUN} 
           active={current === BUN} 
@@ -91,11 +91,11 @@ export default function BurgerIngredients() {
           Начинки
         </Tab>
       </nav>
-      <div className="overflow-auto overflow-x-hidden mt-10 custom-scroll">
-        <p className="text text_type_main-medium mb-6" ref={bunRef}>
+      <div className="overflow-auto overflow-x-hidden mt-5 md:mt-10 custom-scroll">
+        <p className="text text_type_main-medium mb-4 md:mb-6 ml-2 md:ml-0" ref={bunRef}>
           Булки
         </p>
-        <ul className='grid grid-cols-2 auto-rows-auto gap-6'>
+        <ul className='grid grid-cols-2 auto-rows-auto gap-4 md:gap-6'>
           {
             buns &&
             buns.map(item => (<Ingredient ingredientData={item} key={item._id}/>))

@@ -2,6 +2,19 @@ import type { Metadata } from 'next'
 import './styles/globals.css'
 import AppHeader from '../components/AppHeader/app_header'
 import { Providers } from '@/redux/providers'
+import { JetBrains_Mono, Iceland } from 'next/font/google'
+
+const jetBrains = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains',
+})
+ 
+const iceLand = Iceland({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-iceland',
+})
+ 
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,7 +28,7 @@ export default function RootLayout({
 }) {
   return (
     <Providers>
-      <html lang="ru">
+      <html lang="ru" className={`${jetBrains.variable} ${iceLand.variable}`}>
         <body className='container mx-auto'>
           
             <AppHeader />

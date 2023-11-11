@@ -30,10 +30,10 @@ export default function Ingredient({ingredientData}: IngredientProps) {
       <Link href={`/ingredients/${ingredientData._id}`}>
         <Image width={240} height={120} src={ingredientData.image} alt={ingredientData.name} />
         <div className='flex justify-center gap-2 mt-1 mb-2'>
-          <p className="text text_type_digits-default">{ingredientData.price}</p>
+          <p className="font-ice leading-5 md:leading-6 text-[22px] md:text-[28px]">{ingredientData.price}</p>
           <CurrencyIcon type="primary" />
         </div>
-        <p className="text text-center text_type_main-default">
+        <p className="font-jet text-sm leading-5 md:leading-6 md:text-base text-center">
           {ingredientData.name}
         </p>
       </Link>
