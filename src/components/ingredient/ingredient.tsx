@@ -24,7 +24,6 @@ export default function Ingredient({ingredientData}: IngredientProps) {
     }, [burgerData, ingredientData]
   )
 
-  
   const handleAddButton = useCallback(() => {
     if (ingredientData.type === 'bun') {
       return dispatch(addBun(ingredientData))
@@ -41,17 +40,19 @@ export default function Ingredient({ingredientData}: IngredientProps) {
   return (
     <li className='flex flex-col items-center relative transition-opacity hover:opacity-75' ref={drag}>
       <Link href={`/ingredients/${ingredientData._id}`}>
-        <Image width={240} height={120} src={ingredientData.image} alt={ingredientData.name} />
+        <div className='flex justify-center'>
+          <Image width={240} height={120} priority={true} src={ingredientData.image} alt={ingredientData.name} />
+        </div>
         <div className='flex justify-center gap-2 mt-1 mb-2'>
           <p className="font-ice leading-5 md:leading-6 text-[22px] md:text-[28px]">{ingredientData.price}</p>
           <CurrencyIcon type="primary" />
         </div>
-        <p className="font-jet text-sm leading-5 md:leading-6 md:text-base text-center">
+        <p className="font-jet text-sm leading-5 md:leading-6 md:text-base text-center min-h-[60px]">
           {ingredientData.name}
         </p>
       </Link>
       <button 
-        className='sm:invisible mt-9 font-jet text-sm leading-5 text-[#4C4CFF] transition-opacity hover:opacity-75'
+        className='lg:invisible mt-9 font-jet text-sm leading-5 text-[#4C4CFF] transition-opacity hover:opacity-75'
         onClick={handleAddButton}
         >
         Добавить

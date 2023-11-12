@@ -30,10 +30,8 @@ export default function RootLayout({
     <Providers>
       <html lang="ru" className={`${jetBrains.variable} ${iceLand.variable}`}>
         <body className='container mx-auto'>
-          
             <AppHeader />
             {children}
-          
         </body>
       </html>
     </Providers>

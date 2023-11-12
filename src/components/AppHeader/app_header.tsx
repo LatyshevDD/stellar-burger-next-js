@@ -40,12 +40,14 @@ export default function AppHeader() {
             </p>
           </Link>
         </nav>
+        {/* Header на маленьких экранах */}
         <nav className='flex justify-between lg:hidden items-center w-[83%] mt-3 mb-3 gap-2'>
           <Image src={LogoSmal} alt='Логотип Бургер'/>
           <MenuIcon type='primary' onClick={() => setBurgerMenu(!burgerMenu)} />
         </nav>
       </header>
-      <nav className={`${burgerMenu ? 'translate-y-0' : 'translate-y-[-200%]'} flex flex-col pt-4 px-2 z-10 h-screen transition-all absolute top-0 w-full bg-[#131316]`}>
+      {/* Выпадающее меню на маленьких экранах */}
+      <nav className={`${burgerMenu ? 'translate-y-0' : 'translate-y-[-200%]'} flex flex-col pt-4 px-2 z-10 h-screen transition-all absolute top-0 left-0 w-screen bg-[#131316]`}>
           <div className='flex justify-between gap-2'>
             <p className="text text_type_main-medium">
               Меню
@@ -65,6 +67,7 @@ export default function AppHeader() {
               <ArrowDownIcon type={pathname === '/profile' ? 'primary' : 'secondary'} onClick={() => setProfileBurgerMenu(true)}/>
             }
           </div>
+          {/* Выпадающее меню профиля */}
           <div className={`${profileBurgerMenu ? '' : 'h-0'} flex flex-col overflow-hidden transition-all`}>
             <Link href='/profile'>
               <p className={`my-2.5 text_type_main-default ml-10 ${pathname === '/profile' ? 'text-[rgba(242,242,243,1)]' : 'text-[rgba(133,133,173,1)]'} `}>
