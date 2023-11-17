@@ -52,8 +52,8 @@ export default function BurgerConstructor() {
   } 
 
   return (
-    <section className="mt-25 hidden lg:block" ref={drop}>
-      <div className="flex flex-col gap-4 h-74%">
+    <section className="mt-25 hidden lg:block overflow-hidden" ref={drop}>
+      <div className="flex flex-col gap-4 h-[74%]">
       {
         bun.length > 0 && (
           <div className="pl-6 pr-2">
@@ -63,11 +63,12 @@ export default function BurgerConstructor() {
               price={bun[0].price}
               thumbnail={bun[0].image}
               isLocked
+              extraClass='!text-sm !xl:text-base'
             />
           </div>  
         )
       }
-      <ul className="flex flex-col gap-4 custom-scroll overflow-auto overflow-x-hidden">
+      <ul className="flex flex-col max-h-[80%] gap-4 custom-scroll overflow-auto overflow-x-hidden">
         {
           ingredients.map((item) => (<BurgerIngredient ingredientData={item} key={item.key}/>))
         }
@@ -81,9 +82,9 @@ export default function BurgerConstructor() {
               price={bun[0].price}
               thumbnail={bun[0].image}
               isLocked
+              extraClass='!text-sm !xl:text-base'
             />
-          </div>
-            
+          </div>  
         )
       }
       </div>

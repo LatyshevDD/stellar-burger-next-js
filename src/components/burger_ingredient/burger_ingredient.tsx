@@ -35,7 +35,7 @@ export default function BurgerIngredient({ingredientData}: IngredientProps) {
   }), [ingrediences])
   
   return (
-    <div ref={preview}>
+    <div ref={preview} className="opacity-100">
       <li className={`${isDragging ? 'opacity-0' : 'opacity-100'} flex items-center mr-2`} ref={drop}>
         <div ref={drag}>
           <DragIcon type="primary"/>
@@ -47,9 +47,9 @@ export default function BurgerIngredient({ingredientData}: IngredientProps) {
           handleClose={() => {
             dispatch(deleteIngredient(ingredientData))
           }}
+          extraClass='!text-sm !xl:text-base'
         />
       </li>
     </div>
-    
   )
 }
