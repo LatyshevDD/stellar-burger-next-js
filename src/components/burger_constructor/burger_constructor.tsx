@@ -109,7 +109,7 @@ export default function BurgerConstructor() {
         </div>
       </section>
       {/* Секция для экранов с шириной менее 1280px */}
-      <section className={`${burgerData.smallBurgerConstructorMenu ? 'flex' : 'hidden'} flex-col h-screen absolute top-0 z-10 bg-[#131316] transition-all container mx-auto overflow-hidden`}>
+      <section className={`${burgerData.smallBurgerConstructorMenu ? 'flex' : 'hidden'} flex-col xl:hidden h-screen absolute top-0 z-10 bg-[#131316] transition-all container mx-auto overflow-hidden`}>
         <div className='flex items-center justify-between px-2 py-4'>
           <p className="text text_type_main-medium">
             Заказ
@@ -121,6 +121,25 @@ export default function BurgerConstructor() {
             ingredients.map((item) => (<BurgerIngredient type='smallScreen' ingredientData={item} key={item.key}/>))
           }
         </ul>
+        <div className="flex mt-2 gap-4 rounded-2xl bg-[#1C1C21]">
+        <div className="flex items-center gap-4 my-4 mx-auto">
+          <div className="flex gap-2">
+            <p className="font-ice text-[22px] leading-6">
+              {totalPrice}
+            </p>
+            <CurrencyIcon type="primary" />
+          </div>
+          <Button 
+            htmlType="button" 
+            type="primary" 
+            size="small" 
+            extraClass="ml-2"
+            onClick={() => {}}
+            >
+              Смотреть заказ
+          </Button>
+        </div>
+      </div>
       </section>
     </>
   )

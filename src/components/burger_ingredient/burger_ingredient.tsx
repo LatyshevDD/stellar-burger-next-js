@@ -72,6 +72,7 @@ export default function BurgerIngredient({ingredientData, type}: IngredientProps
                     alt='Изображение ингридиента'
                     width={52}
                     height={40}
+                    style={{alignSelf: "stretch", objectFit:'cover'}}
                   />
                   <p className="font-jet text-sm md:text-base grow"> {ingredientData.name} </p>
                   <div className='flex justify-center gap-2 mr-2'>
