@@ -4,8 +4,25 @@ import { useRef, useState, useMemo, useCallback } from "react"
 import { Tab, Button, CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components"
 import { BUN, MAIN, SAUCE } from "@/utils/constants"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
-import Ingredient from "../ingredient/ingredient"
 import { openSmallBurgerConstructorMenu } from "@/redux/burgerDataSlice"
+import dynamic from "next/dynamic"
+
+const Ingredient = dynamic(
+  () => import('../ingredient/ingredient'),
+  {
+    loading: () => {
+      return (
+        <div className="w-full h-full flex gap-2 justify-center items-center">
+          <p className="font-jet text-sm xl:text-base animate-pulse">
+            Загрузка
+          </p>
+          <div className="border-4 border-b-transparent rounded-full w-5 h-5 animate-spin"></div>
+        </div>
+      )
+    },
+  }
+)
+  
 
 export default function BurgerIngredients() {
 
