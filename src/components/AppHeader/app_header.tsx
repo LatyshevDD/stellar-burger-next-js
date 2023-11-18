@@ -16,8 +16,8 @@ export default function AppHeader() {
 
   return (
     <>
-      <header className={`flex justify-center mx-auto bg-[#1C1C21] lg:mt-5 ${burgerMenu && 'hidden'}`}>
-        <nav className='hidden items-center mt-4 mb-4 w-[83%] lg:flex'>
+      <header className={`flex justify-center mx-auto bg-[#1C1C21] xl:mt-5 ${burgerMenu && 'hidden'}`}>
+        <nav className='hidden items-center mt-4 mb-4 w-[83%] xl:flex'>
           <Link href='/' className={`flex justify-center transition-opacity hover:opacity-60 gap-2 grow-[1] ${pathname === '/' ? 'text-[rgba(242,242,243,1)]' : 'text-[rgba(133,133,173,1)]'}`}>
             <BurgerIcon type={pathname === '/' ? 'primary' : 'secondary'} />
             <p className="text text_type_main-default">
@@ -41,13 +41,13 @@ export default function AppHeader() {
           </Link>
         </nav>
         {/* Header на маленьких экранах */}
-        <nav className='flex justify-between lg:hidden items-center w-[83%] mt-3 mb-3 gap-2'>
+        <nav className='flex justify-between xl:hidden items-center w-[83%] mt-3 mb-3 gap-2'>
           <Image src={LogoSmal} alt='Логотип Бургер'/>
           <MenuIcon type='primary' onClick={() => setBurgerMenu(!burgerMenu)} />
         </nav>
       </header>
       {/* Выпадающее меню на маленьких экранах */}
-      <nav className={`${burgerMenu ? 'translate-y-0' : 'translate-y-[-200%]'} flex flex-col pt-4 px-2 z-10 h-screen transition-all absolute top-0 left-0 w-screen bg-[#131316]`}>
+      <nav className={`${burgerMenu ? 'translate-y-0' : 'translate-y-[-200%]'} flex flex-col pt-4 px-2 z-10 h-screen transition-all absolute top-0 container mx-auto bg-[#131316]`}>
           <div className='flex justify-between gap-2'>
             <p className="text text_type_main-medium">
               Меню

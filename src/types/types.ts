@@ -19,7 +19,8 @@ export type IngredientType = {
 }
 
 export type IngredientProps = {
-  ingredientData: IngredientType
+  ingredientData: IngredientType,
+  type?: string
 }
 
 export type IngredientDetailsProps = {
@@ -79,7 +80,8 @@ export type ThunkApiConfig = {
 
 export type BurgerDataType = {
   bun: IngredientType[],
-  ingredients: IngredientType[]
+  ingredients: IngredientType[],
+  smallBurgerConstructorMenu: boolean
 }
 
 export type sortIngredientsPayloadType = {

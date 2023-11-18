@@ -52,7 +52,7 @@ export default function Ingredient({ingredientData}: IngredientProps) {
         </p>
       </Link>
       <button 
-        className='lg:invisible mt-9 font-jet text-sm leading-5 text-[#4C4CFF] transition-opacity hover:opacity-75'
+        className='xl:invisible mt-9 font-jet text-sm leading-5 text-[#4C4CFF] transition-opacity hover:opacity-75'
         onClick={handleAddButton}
         >
         Добавить

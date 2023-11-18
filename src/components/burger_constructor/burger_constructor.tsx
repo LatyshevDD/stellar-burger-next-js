@@ -1,13 +1,14 @@
 'use client'
 
 import { useMemo } from "react"
-import { ConstructorElement, CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components"
+import { ConstructorElement, CurrencyIcon, Button, CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components"
 import { addBun, addBurgerIngredient } from "@/redux/burgerDataSlice"
 import { getOrderData } from "@/redux/orderDataSlice"
 import { useDrop } from "react-dnd"
 import BurgerIngredient from "../burger_ingredient/burger_ingredient"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
 import { IngredientType } from "@/types/types"
+import { closeSmallBurgerConstructorMenu } from "@/redux/burgerDataSlice"
 
 export default function BurgerConstructor() {
 
@@ -52,42 +53,75 @@ export default function BurgerConstructor() {
   } 
 
   return (
-    <section className="mt-25 hidden lg:block overflow-hidden" ref={drop}>
-      <div className="flex flex-col gap-4 h-[74%]">
-      {
-        bun.length > 0 && (
-          <div className="pl-6 pr-2">
-            <ConstructorElement
-              type="top"
-              text={bun[0].name + ' ' + '(верх)'}
-              price={bun[0].price}
-              thumbnail={bun[0].image}
-              isLocked
-              extraClass='!text-sm !xl:text-base'
-            />
-          </div>  
-        )
-      }
-      <ul className="flex flex-col max-h-[80%] gap-4 custom-scroll overflow-auto overflow-x-hidden">
+    <>
+      {/* Секция для экранов с шириной более 1280px */}
+      <section className="mt-25 hidden xl:block overflow-hidden" ref={drop}>
+        <div className="flex flex-col gap-4 h-[74%]">
         {
-          ingredients.map((item) => (<BurgerIngredient ingredientData={item} key={item.key}/>))
+          bun.length > 0 && (
+            <div className="pl-6 pr-2">
+              <ConstructorElement
+                type="top"
+                text={bun[0].name + ' ' + '(верх)'}
+                price={bun[0].price}
+                thumbnail={bun[0].image}
+                isLocked
+                extraClass='!text-sm !xl:text-base'
+              />
+            </div>  
+          )
         }
-      </ul>
-      {
-        bun.length > 0 && (
-          <div className="pl-6 pr-2">
-            <ConstructorElement
-              type="bottom"
-              text={bun[0].name + ' ' + '(низ)'}
-              price={bun[0].price}
-              thumbnail={bun[0].image}
-              isLocked
-              extraClass='!text-sm !xl:text-base'
-            />
-          </div>  
-        )
-      }
-      </div>
-    </section>
+        <ul className="flex flex-col max-h-[80%] gap-4 custom-scroll overflow-auto overflow-x-hidden">
+          {
+            ingredients.map((item) => (<BurgerIngredient type='largeScreen' ingredientData={item} key={item.key}/>))
+          }
+        </ul>
+        {
+          bun.length > 0 && (
+            <div className="pl-6 pr-2">
+              <ConstructorElement
+                type="bottom"
+                text={bun[0].name + ' ' + '(низ)'}
+                price={bun[0].price}
+                thumbnail={bun[0].image}
+                isLocked
+                extraClass='!text-sm !xl:text-base'
+              />
+            </div>  
+          )
+        }
+        </div>
+        <div className='flex gap-10 justify-end items-center mt-10'>
+          <div className='flex gap-2'>
+            <p className="text text_type_digits-default">
+              {totalPrice}
+            </p>
+            <CurrencyIcon type="primary" />
+          </div>
+          <Button 
+            htmlType="button" 
+            type="primary" 
+            size="large" 
+            onClick={handleGetOrder}
+          >
+            Оформить заказ
+          </Button>
+        </div>
+      </section>
+      {/* Секция для экранов с шириной менее 1280px */}
+      <section className={`${burgerData.smallBurgerConstructorMenu ? 'flex' : 'hidden'} flex-col h-screen absolute top-0 z-10 bg-[#131316] transition-all container mx-auto overflow-hidden`}>
+        <div className='flex items-center justify-between px-2 py-4'>
+          <p className="text text_type_main-medium">
+            Заказ
+          </p>
+          <CloseIcon type='primary' onClick={() => dispatch(closeSmallBurgerConstructorMenu())} />
+        </div>
+        <ul className="flex flex-col overflow-auto grow">
+          {
+            ingredients.map((item) => (<BurgerIngredient type='smallScreen' ingredientData={item} key={item.key}/>))
+          }
+        </ul>
+      </section>
+    </>
   )
 }

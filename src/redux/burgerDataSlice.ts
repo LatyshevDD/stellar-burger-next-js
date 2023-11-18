@@ -4,7 +4,8 @@ import { BurgerDataType, IngredientType, sortIngredientsPayloadType } from '../t
 
 const initialState: BurgerDataType = {
   bun: [],
-  ingredients: []
+  ingredients: [],
+  smallBurgerConstructorMenu: false
 }
 
 export const burgerDataSlice = createSlice({
@@ -86,9 +87,21 @@ export const burgerDataSlice = createSlice({
         ingredients: ingrediences,
       }
     },
+    openSmallBurgerConstructorMenu: (state) => {
+      return {
+        ...state,
+        smallBurgerConstructorMenu: true
+      }
+    },
+    closeSmallBurgerConstructorMenu: (state) => {
+      return {
+        ...state,
+        smallBurgerConstructorMenu: false
+      }
+    },
   },
 })
 
-export const { addBurgerIngredient, addBun, deleteIngredient, sortIngredients } = burgerDataSlice.actions
+export const { addBurgerIngredient, addBun, deleteIngredient, sortIngredients, openSmallBurgerConstructorMenu, closeSmallBurgerConstructorMenu } = burgerDataSlice.actions
 
 export default burgerDataSlice.reducer

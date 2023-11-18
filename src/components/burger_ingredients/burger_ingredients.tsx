@@ -5,6 +5,7 @@ import { Tab, Button, CurrencyIcon } from "@ya.praktikum/react-developer-burger-
 import { BUN, MAIN, SAUCE } from "@/utils/constants"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
 import Ingredient from "../ingredient/ingredient"
+import { openSmallBurgerConstructorMenu } from "@/redux/burgerDataSlice"
 
 export default function BurgerIngredients() {
 
@@ -164,7 +165,7 @@ export default function BurgerIngredients() {
         </ul>
       </div>
       {/* Кнопка заказа на маленьких разрешениях */}
-      <div className="flex mt-2 gap-4 rounded-2xl bg-[#1C1C21] lg:hidden">
+      <div className="flex mt-2 gap-4 rounded-2xl bg-[#1C1C21] xl:hidden">
         <div className="flex items-center gap-4 my-4 mx-auto">
           <div className="flex gap-2">
             <p className="font-ice text-[22px] leading-6">
@@ -172,8 +173,14 @@ export default function BurgerIngredients() {
             </p>
             <CurrencyIcon type="primary" />
           </div>
-          <Button htmlType="button" type="primary" size="small" extraClass="ml-2">
-            Смотреть заказ
+          <Button 
+            htmlType="button" 
+            type="primary" 
+            size="small" 
+            extraClass="ml-2"
+            onClick={() => dispatch(openSmallBurgerConstructorMenu())}
+            >
+              Смотреть заказ
           </Button>
         </div>
       </div>
