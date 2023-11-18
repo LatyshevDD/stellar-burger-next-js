@@ -23,7 +23,6 @@ const Ingredient = dynamic(
   }
 )
   
-
 export default function BurgerIngredients() {
 
   const ingrediences = useAppSelector((state) => state.ingrediencesData.ingrediences)

@@ -1,14 +1,30 @@
 'use client'
 
-import { useMemo } from "react"
+import { useMemo, useCallback } from "react"
 import { ConstructorElement, CurrencyIcon, Button, CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components"
 import { addBun, addBurgerIngredient } from "@/redux/burgerDataSlice"
 import { getOrderData } from "@/redux/orderDataSlice"
 import { useDrop } from "react-dnd"
-import BurgerIngredient from "../burger_ingredient/burger_ingredient"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
 import { IngredientType } from "@/types/types"
 import { closeSmallBurgerConstructorMenu } from "@/redux/burgerDataSlice"
+import dynamic from "next/dynamic"
+
+const BurgerIngredient = dynamic(
+  () => import('../burger_ingredient/burger_ingredient'),
+  {
+    loading: () => {
+      return (
+        <div className="w-full h-full flex gap-2 justify-center items-center">
+          <p className="font-jet text-sm xl:text-base animate-pulse">
+            Загрузка
+          </p>
+          <div className="border-4 border-b-transparent rounded-full w-5 h-5 animate-spin"></div>
+        </div>
+      )
+    },
+  }
+)
 
 export default function BurgerConstructor() {
 
@@ -43,14 +59,17 @@ export default function BurgerConstructor() {
     [ingredients, bun]
   )
 
-  const handleGetOrder = () => {
-    const totalIngrediences: IngredientType[] = [...bun,...ingredients]
+  const handleGetOrder = useCallback(
+    () => {
+      const totalIngrediences: IngredientType[] = [...bun,...ingredients]
+  
+      if (totalIngrediences.length >= 1) {
+        // navigate('/order',{state: { background: location } })
+        dispatch(getOrderData(totalIngrediences))
+      }
+    },[bun, ingredients, dispatch] 
+  )
 
-    if (totalIngrediences.length >= 1) {
-      // navigate('/order',{state: { background: location } })
-      dispatch(getOrderData(totalIngrediences))
-    }
-  } 
 
   return (
     <>
