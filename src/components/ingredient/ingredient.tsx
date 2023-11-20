@@ -32,14 +32,17 @@ export default function Ingredient({ingredientData}: IngredientProps) {
     return dispatch(addBurgerIngredient(ingredientData))
   }, [ingredientData, dispatch])
 
-  const [, drag] = useDrag(() => ({
+  const [{isDragging}, drag] = useDrag(() => ({
     type: 'ingredient',
     item: ingredientData,
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
   }))
 
   return (
     <li className='flex flex-col items-center relative transition-opacity hover:opacity-75' ref={drag}>
-      <Link href={`/ingredients/${ingredientData._id}`}>
+      <Link className={`${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`} href={`/ingredients/${ingredientData._id}`}>
         <div className='flex justify-center'>
           <Image width={240} height={120} priority={true} src={ingredientData.image} alt={ingredientData.name} />
         </div>

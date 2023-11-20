@@ -40,7 +40,7 @@ export default function BurgerIngredient({ingredientData, type}: IngredientProps
       {
         type === 'largeScreen' &&
         (
-          <li ref={preview} className="opacity-100">
+          <li ref={preview} className={`${isDragging ? 'cursor-grabbing' : 'cursor-grab'} opacity-100`}>
             <div className={`${isDragging ? 'opacity-0' : 'opacity-100'} flex items-center mr-2`} ref={drop}>
               <div ref={drag}>
                 <DragIcon type="primary"/>
