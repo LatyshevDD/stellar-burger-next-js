@@ -85,7 +85,7 @@ export default function BurgerIngredient({ingredientData, type}: IngredientProps
               {
                 ingredientData.type !== 'bun' &&
                 <button 
-                className="flex justify-center items-center w-[45%] flex-none h-full bg-[#E52B1A] snap-end"
+                className="flex justify-center items-center w-[45%] flex-none h-full bg-[#E52B1A] snap-end ml-1"
                 onClick={() => {
                   dispatch(deleteIngredient(ingredientData))
                 }}
