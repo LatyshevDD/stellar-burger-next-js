@@ -135,9 +135,15 @@ export default function BurgerConstructor() {
           </p>
           <CloseIcon type='primary' onClick={() => dispatch(closeSmallBurgerConstructorMenu())} />
         </div>
-        <ul className="flex flex-col overflow-auto grow">
+        <ul className="flex flex-col w-full overflow-auto overflow-x-hidden grow">
+          {
+            bun.length > 0 && <BurgerIngredient type='smallScreen' ingredientData={bun[0]} key={bun[0].key}/>
+          }
           {
             ingredients.map((item) => (<BurgerIngredient type='smallScreen' ingredientData={item} key={item.key}/>))
+          }
+          {
+            bun.length > 0 && <BurgerIngredient type='smallScreen' ingredientData={bun[0]} key={bun[0].key}/>
           }
         </ul>
         <div className="flex mt-2 gap-4 rounded-2xl bg-[#1C1C21]">

@@ -1,9 +1,10 @@
 import { useDrag, useDrop } from "react-dnd"
 import { deleteIngredient, sortIngredients } from "@/redux/burgerDataSlice"
-import { DragIcon, ConstructorElement, CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components"
+import { DragIcon, ConstructorElement, CurrencyIcon, DeleteIcon } from "@ya.praktikum/react-developer-burger-ui-components"
 import { IngredientProps, IngredientType } from "@/types/types"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
 import { useMemo } from "react"
+import styles from '../../app/styles/extraStyles.module.css'
 import Image from "next/image"
 
 export default function BurgerIngredient({ingredientData, type}: IngredientProps) {
@@ -61,8 +62,8 @@ export default function BurgerIngredient({ingredientData, type}: IngredientProps
       {
         type === 'smallScreen' &&
         (
-          <li ref={preview} className="opacity-100">
-            <div className={`${isDragging ? 'opacity-0' : 'opacity-100'} flex items-center gap-2`} ref={drop}>
+          <li ref={preview} className={`${styles.scrollbar_none} opacity-100 flex overflow-x-scroll w-full snap-x`}>
+            <div className={`${isDragging ? 'opacity-0' : 'opacity-100'} flex w-full flex-none items-center gap-2 snap-end`} ref={drop}>
               <div ref={drag}>
                 <DragIcon type="primary"/>
               </div>
@@ -81,6 +82,17 @@ export default function BurgerIngredient({ingredientData, type}: IngredientProps
                   </div>
                 </div>
               </div>
+              {
+                ingredientData.type !== 'bun' &&
+                <button 
+                className="flex justify-center items-center w-[45%] flex-none h-full bg-[#E52B1A] snap-end"
+                onClick={() => {
+                  dispatch(deleteIngredient(ingredientData))
+                }}
+              >
+                <DeleteIcon type="primary" />
+              </button>
+              }
           </li>
         )
       }
