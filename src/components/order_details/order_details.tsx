@@ -13,7 +13,7 @@ export default function OrderDetails() {
         123
         {/* {orderNumber} */}
       </p>
-      <p className="text text_type_main-medium mt-8 mb-15 text-center">
+      <p className="text text_type_main-medium mt-8 mb-10 text-center">
         идентификатор заказа
       </p>
       <div className='hidden xl:block'>
@@ -28,7 +28,7 @@ export default function OrderDetails() {
           alt="Подтверждение заказа"
         />
       </div>
-      <p className="text text_type_main-default mt-15 text-center">
+      <p className="text text_type_main-default mt-10 text-center">
         Ваш заказ начали готовить
       </p>
       <p className="text text_type_main-default text_color_inactive mt-2 text-center">
