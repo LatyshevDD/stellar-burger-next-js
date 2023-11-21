@@ -155,7 +155,7 @@ export default function BurgerIngredients() {
         <p className="text text_type_main-medium mb-4 md:mb-6 ml-2 md:ml-0" ref={bunRef}>
           Булки
         </p>
-        <ul className='grid grid-cols-2 auto-rows-auto gap-4 md:gap-6'>
+        <ul className='grid grid-cols-2 auto-rows-auto gap-4 md:gap-6 mb-5'>
           {
             buns &&
             buns.map(item => (<Ingredient ingredientData={item} key={item._id}/>))
@@ -164,7 +164,7 @@ export default function BurgerIngredients() {
         <p className="text text_type_main-medium mb-4 md:mb-6 ml-2 md:ml-0" ref={sauceRef}>
           Соусы
         </p>
-        <ul className='grid grid-cols-2 auto-rows-auto gap-4 md:gap-6'>
+        <ul className='grid grid-cols-2 auto-rows-auto gap-4 md:gap-6 mb-5'>
           {
             sauces &&
             sauces.map(item => (<Ingredient ingredientData={item} key={item._id}/>))
@@ -173,7 +173,7 @@ export default function BurgerIngredients() {
         <p className="text text_type_main-medium mb-4 md:mb-6 ml-2 md:ml-0" ref={mainRef}>
           Начинки
         </p>
-        <ul className='grid grid-cols-2 auto-rows-auto gap-4 md:gap-6'>
+        <ul className='grid grid-cols-2 auto-rows-auto gap-4 md:gap-6 mb-5'>
           {
             mains &&
             mains.map(item => (<Ingredient ingredientData={item} key={item._id}/>))

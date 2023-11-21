@@ -21,8 +21,15 @@ const OrderDetails = dynamic(
 
 export default function Order() {
   return (
-    <Modal onClose={() => {}}>
-      <OrderDetails />
-    </Modal>
+    <>
+      <div className="hidden xl:block">
+        <Modal onClose={() => {}}>
+          <OrderDetails />
+        </Modal>
+      </div>
+      <div className="xl:hidden">
+        <OrderDetails />
+      </div>
+    </>
   )
 }
