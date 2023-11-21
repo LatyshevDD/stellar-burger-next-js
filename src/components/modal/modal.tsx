@@ -4,7 +4,7 @@ import { ModalPropsType } from "@/types/types"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 
-export default function Modal({children, onClose}: ModalPropsType) {
+export default function Modal({children}: ModalPropsType) {
 
   const modal = useRef<HTMLDivElement>(null)
   const router = useRouter()

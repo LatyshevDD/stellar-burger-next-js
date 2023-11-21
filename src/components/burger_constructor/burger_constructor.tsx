@@ -67,7 +67,6 @@ export default function BurgerConstructor() {
   
       if (totalIngrediences.length >= 1) {
         router.push('/order')
-        // navigate('/order',{state: { background: location } })
         // dispatch(getOrderData(totalIngrediences))
       }
     },[bun, ingredients, router] 

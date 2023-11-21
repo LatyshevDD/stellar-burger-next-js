@@ -23,7 +23,7 @@ export default function Order() {
   return (
     <>
       <div className="hidden xl:block">
-        <Modal onClose={() => {}}>
+        <Modal>
           <OrderDetails />
         </Modal>
       </div>
