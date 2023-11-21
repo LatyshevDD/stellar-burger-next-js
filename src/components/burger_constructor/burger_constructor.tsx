@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/store"
 import { IngredientType } from "@/types/types"
 import { closeSmallBurgerConstructorMenu } from "@/redux/burgerDataSlice"
 import dynamic from "next/dynamic"
+import { useRouter } from "next/navigation"
 
 const BurgerIngredient = dynamic(
   () => import('../burger_ingredient/burger_ingredient'),
@@ -30,6 +31,7 @@ export default function BurgerConstructor() {
 
   const burgerData = useAppSelector((state) => state.burgerData)
   const dispatch = useAppDispatch()
+  const router = useRouter()
 
   const [, drop] = useDrop(() => ({
     accept: 'ingredient',
@@ -64,10 +66,11 @@ export default function BurgerConstructor() {
       const totalIngrediences: IngredientType[] = [...bun,...ingredients]
   
       if (totalIngrediences.length >= 1) {
+        router.push('/order')
         // navigate('/order',{state: { background: location } })
-        dispatch(getOrderData(totalIngrediences))
+        // dispatch(getOrderData(totalIngrediences))
       }
-    },[bun, ingredients, dispatch] 
+    },[bun, ingredients, router] 
   )
 
 

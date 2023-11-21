@@ -1,32 +1,42 @@
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, useCallback } from "react"
 import close_image from '../../_images/modal_close.png'
 import { ModalPropsType } from "@/types/types"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 export default function Modal({children, onClose}: ModalPropsType) {
 
   const modal = useRef<HTMLDivElement>(null)
+  const router = useRouter()
 
-  function handleEscClose(e: KeyboardEvent) {
-    // if(orderDataSpinnerActive) {
-    //   return
-    // }
-    if (e.key === "Escape") {
-      onClose()
-    }
-  }
+  const onDismiss = useCallback(() => {
+    router.back()
+  }, [router])
 
-  function overlayClosePopup(e: MouseEvent) {
-    // if(orderDataSpinnerActive) {
-    //   return
-    // }
-    if (e.target instanceof Node) {
-      if (modal.current  && !modal.current.contains(e.target)) {
-        onClose()  
+  const handleEscClose =useCallback(
+    (e: KeyboardEvent) => {
+      // if(orderDataSpinnerActive) {
+      //   return
+      // }
+      if (e.key === "Escape") {
+        onDismiss()
       }
-      return;
-    }
-  }
+    }, [onDismiss]
+  )
+
+  const overlayClosePopup = useCallback(
+    (e: MouseEvent) => {
+      // if(orderDataSpinnerActive) {
+      //   return
+      // }
+      if (e.target instanceof Node) {
+        if (modal.current  && !modal.current.contains(e.target)) {
+          onDismiss()  
+        }
+        return;
+      }
+    }, [onDismiss]
+  )
 
   useEffect(() => {
     document.addEventListener('keydown', handleEscClose);
@@ -49,7 +59,7 @@ export default function Modal({children, onClose}: ModalPropsType) {
             // if(orderDataSpinnerActive) {
             //   return
             // }
-            onClose()
+            onDismiss()
           }  
         }
         >
