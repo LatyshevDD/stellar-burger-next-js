@@ -104,7 +104,7 @@ export default function BurgerIngredients() {
       <p className="font-jet text-center leading-8 md:text-left md:leading-10 text-[28px] md:text-[36px] mt-4 mb-2 md:mt-10 md:mb-5">
         Соберите бургер
       </p>
-      <nav className="grid w-full grid-cols-3">
+      <nav className="grid w-full grid-row-3 sm:grid-cols-3">
       <Tab 
           value={BUN} 
           active={current === BUN} 
