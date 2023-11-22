@@ -161,7 +161,7 @@ export default function BurgerConstructor() {
             type="primary" 
             size="small" 
             extraClass="ml-2"
-            onClick={() => {}}
+            onClick={handleGetOrder}
             >
               Смотреть заказ
           </Button>

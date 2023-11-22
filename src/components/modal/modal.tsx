@@ -2,16 +2,10 @@ import { useRef, useEffect, useCallback } from "react"
 import close_image from '../../_images/modal_close.png'
 import { ModalPropsType } from "@/types/types"
 import Image from "next/image"
-import { useRouter } from "next/navigation"
 
-export default function Modal({children}: ModalPropsType) {
+export default function Modal({children, onClose}: ModalPropsType) {
 
   const modal = useRef<HTMLDivElement>(null)
-  const router = useRouter()
-
-  const onDismiss = useCallback(() => {
-    router.back()
-  }, [router])
 
   const handleEscClose =useCallback(
     (e: KeyboardEvent) => {
@@ -19,9 +13,9 @@ export default function Modal({children}: ModalPropsType) {
       //   return
       // }
       if (e.key === "Escape") {
-        onDismiss()
+        onClose()
       }
-    }, [onDismiss]
+    }, [onClose]
   )
 
   const overlayClosePopup = useCallback(
@@ -31,11 +25,11 @@ export default function Modal({children}: ModalPropsType) {
       // }
       if (e.target instanceof Node) {
         if (modal.current  && !modal.current.contains(e.target)) {
-          onDismiss()  
+          onClose()  
         }
         return;
       }
-    }, [onDismiss]
+    }, [onClose]
   )
 
   useEffect(() => {
@@ -59,7 +53,7 @@ export default function Modal({children}: ModalPropsType) {
             // if(orderDataSpinnerActive) {
             //   return
             // }
-            onDismiss()
+            onClose()
           }  
         }
         >

@@ -28,6 +28,7 @@ export type IngredientDetailsProps = {
 }
 
 export type ModalPropsType = {
+  onClose: () => void,
   children?: ReactElement
 }
 
