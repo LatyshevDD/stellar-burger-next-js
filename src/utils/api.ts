@@ -6,8 +6,7 @@ const config = {
 };
 
 
-const authorization = 'Test'
-// const authorization = localStorage.getItem('accessToken') ?? "Error"
+const authorization = localStorage.getItem('accessToken') ?? "Error"
 const authorizationRequestHeaders: HeadersInit = new Headers()
 authorizationRequestHeaders.append('Content-Type', 'application/json')
 authorizationRequestHeaders.append( 'authorization', authorization)
