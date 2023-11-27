@@ -1,27 +1,31 @@
 'use client'
 
-import { useState } from "react"
+import { useState, useCallback } from "react"
 import Link from "next/link"
 import { Button, EmailInput, PasswordInput } from "@ya.praktikum/react-developer-burger-ui-components"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
 import { login } from "@/redux/userDataSlice"
 // import { useNavigate, useLocation } from "react-router-dom"
+import { useRouter } from "next/navigation"
 
 export default function Login() {
 
   const dispatch = useAppDispatch()
-  // const navigate = useNavigate()
-  // const location = useLocation()
+  const router = useRouter()
   const error = useAppSelector((store) => store.userData.isError)
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    // await dispatch(login({email: email, password: password}))
-    // navigate(location.state.from || '/profile')
-  }
+  const handleSubmit = useCallback(
+    async (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault()
+      await dispatch(login({email: email, password: password}))
+      // router.push('/profile')
+      // navigate(location.state.from || '/profile')
+    }, 
+    [dispatch, email, password]
+  )
 
   return (
     <>
