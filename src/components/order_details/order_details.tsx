@@ -11,7 +11,7 @@ export default function OrderDetails() {
     <div className='flex flex-col items-center pr-12 pl-12 pt-15 pb-15 xl:pr-25 xl:pl-25 xl:pt-30 xl:pb-30'>
       <p className="text text_type_digits-large text-[#4C4CFF] xl:text-[#F2F2F3]">
         123
-        {/* {orderNumber} */}
+        {orderNumber}
       </p>
       <p className="text text_type_main-medium mt-8 mb-10 text-center">
         идентификатор заказа

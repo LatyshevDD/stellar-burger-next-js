@@ -67,9 +67,9 @@ export default function BurgerConstructor() {
   
       if (totalIngrediences.length >= 1) {
         router.push('/order')
-        // dispatch(getOrderData(totalIngrediences))
+        dispatch(getOrderData(totalIngrediences))
       }
-    },[bun, ingredients, router] 
+    },[bun, ingredients, router, dispatch] 
   )
 
 

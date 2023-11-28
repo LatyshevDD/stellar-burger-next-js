@@ -5,7 +5,6 @@ import Link from "next/link"
 import { Button, EmailInput, PasswordInput } from "@ya.praktikum/react-developer-burger-ui-components"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
 import { login } from "@/redux/userDataSlice"
-// import { useNavigate, useLocation } from "react-router-dom"
 import { useRouter } from "next/navigation"
 
 export default function Login() {
@@ -29,24 +28,24 @@ export default function Login() {
 
   return (
     <>
-      <main className='flex justify-center items-center h-[calc(100vh-64px)] xl:h-[calc(100vh-102px)]'>
+      <main className='flex justify-center items-start sm:items-center h-[calc(100vh-64px)] xl:h-[calc(100vh-102px)]'>
         <form 
           className='flex flex-col items-center'
           onSubmit={handleSubmit}
         >
-          <p className="text text_type_main-medium">
+          <p className="font-jet text-2xl mt-[20px] sm:mt-[none]">
             Вход
           </p>
           <EmailInput 
             placeholder={'E-mail'} 
-            extraClass="mt-6" 
+            extraClass="mt-6 !w-[304px] flex sm:!w-[480px] sm:block" 
             value={email}
             onChange={e => setEmail(e.target.value)}
             name = {'email'}
           />
           <PasswordInput 
             placeholder={'Пароль'} 
-            extraClass="mt-6 mb-6" 
+            extraClass="mt-[20px] sm:mt-[24px] mb-6 !w-[304px] flex sm:!w-[480px] sm:block" 
             value={password}
             onChange={e => setPassword(e.target.value)}
             icon={"ShowIcon"}
@@ -68,22 +67,22 @@ export default function Login() {
               </p>
             ) 
           }
-          <div className='flex fap-2 mt-20'>
-            <p className="text text_type_main-default text_color_inactive">
+          <div className='flex flex-col items-center gap-2 mt-[40px] lg:mt-[80px] lg:flex-row'>
+            <p className="font-jet text-sm lg:text-base text_color_inactive">
               Вы - новый пользователь?
             </p>
             <Link href="/register">
-              <p className='text text_type_main-default text-[#4C4CFF]'>
+              <p className='font-jet text-sm lg:text-base text-[#4C4CFF]'>
                 Зарегистрироваться
               </p>
             </Link>
           </div>
-          <div className='flex fap-2 mt-4'>
-            <p className="text text_type_main-default text_color_inactive mt-4">
+          <div className='flex flex-col items-center gap-2 mt-4 lg:flex-row'>
+            <p className="font-jet text-sm lg:text-base  text_color_inactive">
               Забыли пароль?
             </p>
             <Link href="/forgot-password">
-              <p className='text text_type_main-default mt-4 text-[#4C4CFF]'>
+              <p className='font-jet text-sm lg:text-base  text-[#4C4CFF]'>
                 Восстановить пароль
               </p>
             </Link>
