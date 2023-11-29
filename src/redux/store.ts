@@ -7,6 +7,8 @@ import orderDataSlice from './orderDataSlice'
 import userDataSlice from './userDataSlice'
 import feedDataSlice from './feedDataSlice'
 import profileOrdersDataSlice from './profileOrdersDataSlice'
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from './saga'
 
 import { setFeedSocketConnectionStatus, setFeed, feedWebSocketStart, feedWebSocketStop } from './feedDataSlice'
 import { setProfileOrdersSocketConnectionStatus, setProfileOrders, profileOrdersWebSocketStart, profileOrdersWebSocketStop } from './profileOrdersDataSlice'
@@ -19,6 +21,8 @@ const rootReducer = combineReducers({
   feedData: feedDataSlice,
   profileOrdersData: profileOrdersDataSlice,
   })
+
+const sagaMiddleware = createSagaMiddleware()
 
 export const store = configureStore({
   reducer: rootReducer,
@@ -39,10 +43,13 @@ export const store = configureStore({
           onMessage: setProfileOrders,
           onClose: setProfileOrdersSocketConnectionStatus,
           onError: setProfileOrdersSocketConnectionStatus,
-        })
+        }),
+        sagaMiddleware
       )
 
 })
+
+sagaMiddleware.run(rootSaga)
 
 export type RootState = ReturnType<typeof rootReducer>
 export type AppDispatch = typeof store.dispatch

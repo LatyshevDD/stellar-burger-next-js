@@ -11,9 +11,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    getIngredience()
-      .then(res => dispatch(setIngrediences([...res.data])))
-      .catch(e => dispatch(setError({hasError: true, errorMessage: e})))
+    dispatch({type: 'FETCH_INGREDIENCES'})
   }, [])
 
   useEffect(() => dispatch(checkUserAuth()), [])
