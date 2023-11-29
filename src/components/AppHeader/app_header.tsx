@@ -42,7 +42,9 @@ export default function AppHeader() {
         </nav>
         {/* Header на маленьких экранах */}
         <nav className='flex justify-between xl:hidden items-center w-[83%] mt-3 mb-3 gap-2'>
-          <Image src={LogoSmal} alt='Логотип Бургер'/>
+          <Link href='/'>
+            <Image src={LogoSmal} alt='Логотип Бургер'/>
+          </Link>
           <MenuIcon type='primary' onClick={() => setBurgerMenu(!burgerMenu)} />
         </nav>
       </header>

@@ -6,8 +6,8 @@ const config = {
 };
 
 
-const authorization = localStorage.getItem('accessToken') ?? "Error"
-const authorizationRequestHeaders: HeadersInit = new Headers()
+let authorization = localStorage.getItem('accessToken') ?? "Error"
+let authorizationRequestHeaders: HeadersInit = new Headers()
 authorizationRequestHeaders.append('Content-Type', 'application/json')
 authorizationRequestHeaders.append( 'authorization', authorization)
 
@@ -100,6 +100,12 @@ export function logoutRequest() {
 }
 
 export function getUserRequest() {
+
+  authorization = localStorage.getItem('accessToken') ?? "Error"
+  authorizationRequestHeaders = new Headers()
+  authorizationRequestHeaders.append('Content-Type', 'application/json')
+  authorizationRequestHeaders.append( 'authorization', authorization)
+
   return requestApi<GetUserRequestType>('https://norma.nomoreparties.space/api/auth/user', {
     method: 'GET',
     headers: authorizationRequestHeaders

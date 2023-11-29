@@ -66,8 +66,8 @@ export default function BurgerConstructor() {
       const totalIngrediences: IngredientType[] = [...bun,...ingredients]
   
       if (totalIngrediences.length >= 1) {
-        router.push('/order')
         dispatch(getOrderData(totalIngrediences))
+        router.push('/order')
       }
     },[bun, ingredients, router, dispatch] 
   )
