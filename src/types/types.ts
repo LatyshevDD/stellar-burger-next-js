@@ -25,10 +25,6 @@ export type IngredientProps = {
   type?: string
 }
 
-export type IngredientDetailsProps = {
-  fullScrin: boolean
-}
-
 export type ModalPropsType = {
   onClose: () => void,
   children?: ReactElement
