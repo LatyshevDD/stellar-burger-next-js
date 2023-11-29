@@ -30,6 +30,7 @@ const BurgerIngredient = dynamic(
 export default function BurgerConstructor() {
 
   const burgerData = useAppSelector((state) => state.burgerData)
+  const user = useAppSelector((store) => store.userData.user)
   const dispatch = useAppDispatch()
   const router = useRouter()
 
@@ -64,12 +65,16 @@ export default function BurgerConstructor() {
   const handleGetOrder = useCallback(
     () => {
       const totalIngrediences: IngredientType[] = [...bun,...ingredients]
+
+      if(!user) {
+        return router.push('/login?from=/')
+      }
   
       if (totalIngrediences.length >= 1) {
         dispatch(getOrderData(totalIngrediences))
         router.push('/order')
       }
-    },[bun, ingredients, router, dispatch] 
+    },[bun, ingredients, router, dispatch, user] 
   )
 
 
@@ -80,7 +85,7 @@ export default function BurgerConstructor() {
         <div className="flex flex-col gap-4 h-[74%]">
         {
           bun.length > 0 && (
-            <div className="pl-6 pr-2">
+            <div className="pl-6 pr-2" key={bun[0].key_1}>
               <ConstructorElement
                 type="top"
                 text={bun[0].name + ' ' + '(верх)'}
@@ -99,7 +104,7 @@ export default function BurgerConstructor() {
         </ul>
         {
           bun.length > 0 && (
-            <div className="pl-6 pr-2">
+            <div className="pl-6 pr-2" key={bun[0].key_2}>
               <ConstructorElement
                 type="bottom"
                 text={bun[0].name + ' ' + '(низ)'}

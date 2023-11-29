@@ -59,11 +59,13 @@ export const burgerDataSlice = createSlice({
         }
       },
       prepare: (item: IngredientType) => {
-        const key = nanoid()
+        const key_1 = nanoid()
+        const key_2= nanoid()
         return {
           payload: {
             ...item,
-            key: key
+            key_1: key_1,
+            key_2: key_2
           }
         }
       }

@@ -16,6 +16,8 @@ export type IngredientType = {
   image_large: string,
   _v: number,
   key?: string,
+  key_1?: string,
+  key_2?: string
 }
 
 export type IngredientProps = {

@@ -5,9 +5,12 @@ import Link from "next/link"
 import { Button, EmailInput, PasswordInput } from "@ya.praktikum/react-developer-burger-ui-components"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
 import { login } from "@/redux/userDataSlice"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 
 export default function Login() {
+
+  const searchParams = useSearchParams()
+  const from = searchParams.get('from')
 
   const dispatch = useAppDispatch()
   const router = useRouter()
@@ -20,10 +23,9 @@ export default function Login() {
     async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
       await dispatch(login({email: email, password: password}))
-      // router.push('/profile')
-      // navigate(location.state.from || '/profile')
+      router.push(`${from ? from : 'profile'}`)
     }, 
-    [dispatch, email, password]
+    [dispatch, email, password, from, router]
   )
 
   return (
