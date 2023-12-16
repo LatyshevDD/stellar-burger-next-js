@@ -7,7 +7,7 @@ import { IngredientType } from '../../types/types'
 import Image from 'next/image'
 
 
-export default function IngredientDetails() {
+export default function IngredientDetails({fullWidth} : {fullWidth: boolean}) {
 
   const params = useParams()
   const { ingredientID } = params
@@ -26,7 +26,7 @@ export default function IngredientDetails() {
         ingredient
         &&
         <>
-          <p className='hidden xl:block self-start font-jet text-4xl pb-[16px] pt-[40px] pl-[40px]'>
+          <p className={`hidden xl:block ${fullWidth ? '' : 'self-start pl-[40px]'} font-jet text-4xl pb-[16px] pt-[40px]`}>
             Детали ингредиента
           </p>
           <Image 

@@ -21,7 +21,7 @@ export default function Ingredient() {
     <>
       <div className="hidden xl:block">
         <Modal onClose={onDismiss}>  
-          <IngredientDetails />
+          <IngredientDetails fullWidth={false} />
         </Modal>
       </div>
       <div className="container absolute top-0 flex flex-col z-10 xl:hidden h-screen bg-[#131316]">
@@ -34,7 +34,7 @@ export default function Ingredient() {
           </button>
         </div>
         <div className="self-center">
-          <IngredientDetails />
+          <IngredientDetails fullWidth={false}/>
         </div>
       </div>
     </>
