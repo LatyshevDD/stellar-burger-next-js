@@ -23,11 +23,12 @@ export default function Modal({children, onClose}: ModalPropsType) {
 
   const overlayClosePopup = useCallback(
     (e: MouseEvent) => {
+      let screenWidth = window.screen.width
       if(orderDataSpinnerActive) {
         return
       }
       if (e.target instanceof Node) {
-        if (modal.current  && !modal.current.contains(e.target)) {
+        if (modal.current  && !modal.current.contains(e.target) && screenWidth > 1280) {
           onClose()  
         }
         return;

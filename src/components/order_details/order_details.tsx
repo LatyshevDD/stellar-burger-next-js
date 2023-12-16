@@ -60,7 +60,3 @@ export default function OrderDetails() {
     </div>
   )
 }
-
-//py-[16px] xl:py-[120px] px-[8px] xl:px-[100px]
-
-// pr-12 pl-12 pt-15 pb-15 xl:pr-25 xl:pl-25 xl:pt-30 xl:pb-30

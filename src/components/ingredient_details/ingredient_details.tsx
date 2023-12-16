@@ -21,12 +21,12 @@ export default function IngredientDetails() {
 
   return (
     <main>
-      <div className='flex flex-col items-center  xl:w-[40vw] h-[65vh] 2xl:h-[55vh]'>
+      <div className='flex flex-col items-center  xl:w-[40vw] h-[65vh] 2xl:h-[55vh] px-2 hl:px-0'>
       {
         ingredient
         &&
         <>
-          <p className='self-start font-jet text-4xl pb-[16px] pt-[40px] pl-[40px]'>
+          <p className='hidden xl:block self-start font-jet text-4xl pb-[16px] pt-[40px] pl-[40px]'>
             Детали ингредиента
           </p>
           <Image 
@@ -35,36 +35,36 @@ export default function IngredientDetails() {
             width={480}
             height={240}
           />
-          <p className="font-jet text-2xl mt-[16px]">
+          <p className="font-jet text-center text-2xl mt-[16px]">
             {ingredient.name}
           </p>
-          <ul className='flex gap-5 mt-[32px]'>
-            <li className='flex flex-col gap-2 items-center'>
-              <p className="font-jet text-base text_color_inactive">
+          <ul className='flex justify-center gap-5 mt-[32px] flex-wrap xl:flex-nowrap px-[32px] xl:px-[0px]'>
+            <li className='flex flex-1 xl:flex-auto flex-col gap-2 items-center justify-between'>
+              <p className="font-jet text-center text-base text_color_inactive">
                 Калории,ккал
               </p>
               <p className="font-jet text-base text_color_inactive">
                 {ingredient.calories}
               </p>
             </li>
-            <li className='flex flex-col gap-2 items-center'>
-              <p className="font-jet text-base text_color_inactive">
+            <li className='flex flex-1 xl:flex-auto flex-col gap-2 items-center justify-between'>
+              <p className="font-jet text-center text-base text_color_inactive">
                 Белки, г
               </p>
               <p className="font-jet text-base text_color_inactive">
                 {ingredient.proteins}
               </p>
             </li>
-            <li className='flex flex-col gap-2 items-center'>
-              <p className="font-jet text-base text_color_inactive">
+            <li className='flex flex-1 xl:flex-auto flex-col gap-2 items-center justify-between'>
+              <p className="font-jet text-center text-base text_color_inactive">
                 Жиры, г
               </p>
               <p className="font-jet text-base text_color_inactive">
                 {ingredient.fat}
               </p>
             </li>
-            <li className='flex flex-col gap-2 items-center'>
-              <p className="font-jet text-base text_color_inactive">
+            <li className='flex flex-1 xl:flex-auto flex-col gap-2 items-center justify-between'>
+              <p className="font-jet text-center text-base text_color_inactive">
                 Углеводы, г
               </p>
               <p className="font-jet text-base text_color_inactive">

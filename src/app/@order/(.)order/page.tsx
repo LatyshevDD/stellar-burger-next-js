@@ -29,14 +29,14 @@ export default function Order() {
           <p className="text text_type_main-medium">
             Заказ
           </p>
-          <button onClick={onDismiss}>
+          <button onClick={() => onDismiss()}>
             <Image
               src={close_image}
               alt='Закрыть модальное окно'
             />
           </button>
         </div>
-        <div className="self-center">
+        <div className="flex h-full justify-center">
           <OrderDetails />
         </div>
       </div>

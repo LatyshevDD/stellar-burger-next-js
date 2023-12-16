@@ -5,7 +5,7 @@ import dynamic from "next/dynamic"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useCallback } from "react"
-import close_image from '../../../_images/modal_close.png'
+import close_image from '../../../../_images/modal_close.png'
 
 const IngredientDetails = dynamic(() => import('@/components/ingredient_details/ingredient_details'))
 
@@ -24,11 +24,8 @@ export default function Ingredient() {
           <IngredientDetails />
         </Modal>
       </div>
-      {/* <div className="container absolute top-0 flex flex-col z-10 xl:hidden h-screen bg-[#131316]">
-        <div className='flex items-center justify-between px-2 py-4'>
-          <p className="text text_type_main-medium">
-            Заказ
-          </p>
+      <div className="container absolute top-0 flex flex-col z-10 xl:hidden h-screen bg-[#131316]">
+        <div className='flex items-center justify-end px-2 py-4'>
           <button onClick={onDismiss}>
             <Image
               src={close_image}
@@ -37,9 +34,9 @@ export default function Ingredient() {
           </button>
         </div>
         <div className="self-center">
-          <OrderDetails />
+          <IngredientDetails />
         </div>
-      </div> */}
+      </div>
     </>
   )
 }
