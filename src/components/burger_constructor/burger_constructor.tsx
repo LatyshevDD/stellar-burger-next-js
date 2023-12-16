@@ -67,7 +67,7 @@ export default function BurgerConstructor() {
       const totalIngrediences: IngredientType[] = [...bun,...ingredients]
 
       if(!user) {
-        return router.push('/login?from=/')
+        return router.replace('/login?from=/')
       }
   
       if (totalIngrediences.length >= 1) {
