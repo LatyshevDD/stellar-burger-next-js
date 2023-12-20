@@ -2,30 +2,31 @@
 
 import { useState, useCallback } from "react"
 import Link from "next/link"
-import { Button, EmailInput, PasswordInput } from "@ya.praktikum/react-developer-burger-ui-components"
-import { useAppDispatch, useAppSelector } from "@/redux/store"
-import { login } from "@/redux/userDataSlice"
-import { useRouter, useSearchParams } from "next/navigation"
+import { Button, EmailInput, PasswordInput, Input } from "@ya.praktikum/react-developer-burger-ui-components"
+import { registerRequest } from "@/utils/api"
+import onlyUnAuth from "@/components/onlyUnAuth/onlyUnAuth"
 
-export default function Login() {
 
-  const searchParams = useSearchParams()
-  const from = searchParams.get('from')
+const Register = () => {
 
-  const dispatch = useAppDispatch()
-  const router = useRouter()
-  const error = useAppSelector((store) => store.userData.isError)
-
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState({hasError: false, errorMessage: ''})
+  const [success, setSuccess] = useState({hasSuccess: false, successMessage: ''})
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
-      await dispatch(login({email: email, password: password}))
-      router.push(`${from ? from : 'profile'}`)
+      try {
+        let res = await registerRequest({email: email, password: password, name: name})
+        setSuccess({hasSuccess: res.success, successMessage: 'Регистрация прошла успешно'})
+      } catch(e) {
+        setError({hasError: true, errorMessage: e as string})
+      }
+      
     }, 
-    [dispatch, email, password, from, router]
+    [name, email, password]
   )
 
   return (
@@ -36,8 +37,15 @@ export default function Login() {
           onSubmit={handleSubmit}
         >
           <p className="font-jet text-[28px] sm:text-2xl mt-[20px] sm:mt-[0px]">
-            Вход
+            Регистрация
           </p>
+          <Input 
+            placeholder={'Имя'}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            extraClass="mt-6 !w-[304px] flex sm:!w-[480px] sm:block"
+            name={'name'}
+          />
           <EmailInput 
             placeholder={'E-mail'} 
             extraClass="mt-6 !w-[304px] flex sm:!w-[480px] sm:block" 
@@ -58,34 +66,31 @@ export default function Login() {
             type="primary" 
             size="medium" 
           >
-            Войти
+            Зарегистрироваться
           </Button>
           { 
-            error
-            &&
+            success.hasSuccess &&
             (
               <p className="text text_type_main-default text_color_inactive mt-4">
-                Неверный e-mail или пароль
+                {success.successMessage}
+              </p>
+            ) 
+          }
+          { 
+            error.hasError &&
+            (
+              <p className="text text_type_main-default text_color_inactive mt-4">
+                {error.errorMessage}
               </p>
             ) 
           }
           <div className='flex flex-col items-center gap-2 mt-[40px] lg:mt-[80px] lg:flex-row'>
             <p className="font-jet text-sm lg:text-base text_color_inactive">
-              Вы - новый пользователь?
+              Уже зарегистрированы?
             </p>
-            <Link href="/register">
+            <Link href="/login">
               <p className='font-jet text-sm lg:text-base text-[#4C4CFF]'>
-                Зарегистрироваться
-              </p>
-            </Link>
-          </div>
-          <div className='flex flex-col items-center gap-2 mt-4 lg:flex-row'>
-            <p className="font-jet text-sm lg:text-base  text_color_inactive">
-              Забыли пароль?
-            </p>
-            <Link href="/forgot-password">
-              <p className='font-jet text-sm lg:text-base  text-[#4C4CFF]'>
-                Восстановить пароль
+                Войти
               </p>
             </Link>
           </div>
@@ -94,3 +99,5 @@ export default function Login() {
     </>
   )
 }
+
+export default onlyUnAuth(Register)
