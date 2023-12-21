@@ -6,8 +6,9 @@ import { Button, EmailInput, PasswordInput } from "@ya.praktikum/react-developer
 import { useAppDispatch, useAppSelector } from "@/redux/store"
 import { login } from "@/redux/userDataSlice"
 import { useRouter, useSearchParams } from "next/navigation"
+import onlyUnAuth from "@/components/onlyUnAuth/onlyUnAuth"
 
-export default function Login() {
+const Login = () => {
 
   const searchParams = useSearchParams()
   const from = searchParams.get('from')
@@ -94,3 +95,5 @@ export default function Login() {
     </>
   )
 }
+
+export default onlyUnAuth(Login)
