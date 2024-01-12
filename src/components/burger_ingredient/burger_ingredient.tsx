@@ -67,21 +67,21 @@ export default function BurgerIngredient({ingredientData, type}: IngredientProps
               <div ref={drag}>
                 <DragIcon type="primary"/>
               </div>
-                <div className="flex justify-between items-center gap-2 border-b border-[#2F2F37] min-h-[72px] grow">
-                  <Image 
-                    src={ingredientData.image_mobile}
-                    alt='Изображение ингридиента'
-                    width={52}
-                    height={40}
-                    style={{alignSelf: "stretch", objectFit:'cover'}}
-                  />
-                  <p className="font-jet text-sm md:text-base grow"> {ingredientData.name} </p>
-                  <div className='flex justify-center gap-2 mr-2'>
-                    <p className="font-ice leading-5 md:leading-6 text-[22px] md:text-[28px]">{ingredientData.price}</p>
-                    <CurrencyIcon type="primary" />
-                  </div>
+              <div className="flex justify-between items-center gap-2 border-b border-[#2F2F37] min-h-[72px] grow">
+                <Image 
+                  src={ingredientData.image_mobile}
+                  alt='Изображение ингридиента'
+                  width={52}
+                  height={40}
+                  style={{alignSelf: "stretch", objectFit:'cover'}}
+                />
+                <p className="font-jet text-sm md:text-base grow"> {ingredientData.name} </p>
+                <div className='flex justify-center gap-2 mr-2'>
+                  <p className="font-ice leading-5 md:leading-6 text-[22px] md:text-[28px]">{ingredientData.price}</p>
+                  <CurrencyIcon type="primary" />
                 </div>
               </div>
+            </div>
               {
                 ingredientData.type !== 'bun' &&
                 <button 
