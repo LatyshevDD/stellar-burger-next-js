@@ -9,20 +9,24 @@ import Link from "next/link"
 
 const ForgotPassword = () => {
 
+  const router = useRouter()
   const [email, setEmail] = useState('')
   const [error, setError] = useState({hasError: false, errorMessage: ''})
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
+      if (!email.length) {
+        return setError({hasError: true, errorMessage: 'введите e-mail'})
+      }
       try {
         await forgotPasswordRequest(email)
-        // navigate('/reset-password', {state:{from: location}})
+        router.push('/reset-password?from=/forgot-password')
       } catch (e) {
         setError({hasError: true, errorMessage: e as string})
       }
     },
-    [email]
+    [email, router]
   )
 
   return (
@@ -61,7 +65,7 @@ const ForgotPassword = () => {
           <p className="font-jet text-sm lg:text-base text_color_inactive">
             Вспомнили пароль?
           </p>
-          <Link href="/register">
+          <Link href="/login">
             <p className='font-jet text-sm lg:text-base text-[#4C4CFF]'>
               Войти
             </p>
