@@ -22,7 +22,7 @@ export const socketMiddleware = (wsConfig: WSConfigType): Middleware<{}, RootSta
     
     if(socket) {
       if (type === onStop) {
-        clearTimeout(reconnectTimer)
+        clearTimeout(reconnectTimer) 
         isConnected = false
         reconnectTimer = 0
         socket.close(1000, 'Пользователь покинул страницу')

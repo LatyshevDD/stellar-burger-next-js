@@ -18,29 +18,16 @@ export default function Template({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     dispatch({type: 'FETCH_INGREDIENCES'})
-  }, [])
+  }, [dispatch])
 
-  useEffect(() => dispatch(checkUserAuth()), [])
+  useEffect(() => dispatch(checkUserAuth()), [dispatch])
 
-  //Protectet pages
+  if(pathname !== '/feed') {
+    dispatch({type: 'FEED_WS_CONNECTION_STOP'})
+  }
 
-  //Страницы доступ к которым ограничен для зарегистрированных пользователей
-  
-  // useEffect(
-  //   () => {
-  //     if(pathname === '/register' && user) {
-  //       redirect('/')
-  //     } else {
-  //       setIsAuthChecked(true)
-  //     }
-  //   },
-  //   [user, pathname]
-  // )
-
-  // if(isAuthChecked) {
-  //     return <> {children} </>
-  // }
-
+  if(pathname !== '/profile/orders') {
+    dispatch({type: 'PROFILE_ORDERS_WS_CONNECTION_STOP'})
+  }
   return <> {children} </>
-
 }
