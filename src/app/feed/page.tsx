@@ -1,8 +1,10 @@
 'use client'
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import { Tab } from "@ya.praktikum/react-developer-burger-ui-components"
 import { useAppSelector, useAppDispatch } from "@/redux/store"
 import dynamic from "next/dynamic"
+import { useResize } from "@/utils/hooks"
 
 const Order = dynamic(
   () => import('../../components/order/order'),
@@ -24,6 +26,8 @@ export default function Feed() {
 
   const { orders, total, totalToday} = useAppSelector(state => state.feedData)
   const dispatch = useAppDispatch()
+  const width = useResize()
+  const [tab, setTab] = useState('Заказы')
 
   useEffect(
     () => { 
@@ -33,12 +37,30 @@ export default function Feed() {
   )
 
   return (
-    <main className='flex xl:pb-10 gap-16 xl:w-[80%] mx-auto h-[calc(100vh-64px)] xl:h-[calc(100vh-102px)]'>
+    <main className='flex flex-col lg:flex-row lg:pb-10 gap-16 xl:w-[80%] mx-auto h-[calc(100vh-64px)] xl:h-[calc(100vh-102px)]'>
+
       {/* Секция с информацией о заказах и ингридиентах */}
-      <section className="flex flex-col overflow-hidden w-[48%]">
+      <section className="flex flex-col overflow-hidden w-full lg:w-[48%]">
         <p className="font-jet text-center leading-8 md:text-left md:leading-10 text-[28px] md:text-[36px] mt-[16px] mb-[8px] md:mt-[40px] md:mb-[20px]">
           Лента заказов
         </p>
+        {/* Навигационное меню для ширины экрана менее 1024px(lg) */}
+        <nav className="grid grid-cols-2 lg:hidden">
+          <Tab 
+            value="Заказы" 
+            active={tab === "Заказы"} 
+            onClick={() => setTab("Заказы")}
+          >
+            Заказы
+          </Tab>
+          <Tab 
+            value="Статистика" 
+            active={tab === "Статистика"} 
+            onClick={() => setTab("Статистика")}
+          >
+            Статистика
+          </Tab>
+        </nav>
         <ul className="custom-scroll flex flex-col gap-4 pr-2 overflow-auto overflow-x-hidden">
           {
             orders.length > 0
@@ -47,8 +69,9 @@ export default function Feed() {
           }
         </ul>
       </section>
-      {/* Секция с итоговой информацией о заказах */}
-      <section className="flex flex-col gap-[60px] w-[50%] mt-[40px]">
+
+      {/* Секция со статистикой о заказах */}
+      <section className="flex flex-col gap-[60px] w-full lg:w-[50%] mt-[40px]">
         <div className="flex gap-[36px] overflow-hidden h-[206px]">
           <div className="flex flex-col gap-6 w-[50%]">
             <p className="font-jet text-[24px] leading-8">
@@ -91,9 +114,7 @@ export default function Feed() {
           </p>
           <p className="font-ice text-[144px] leading-[120px] [text-shadow:0px_4px_32px_rgba(51,51,255,0.50),0px_0px_8px_rgba(51,51,255,0.25),0px_0px_16px_rgba(51,51,255,0.25)]">{totalToday}</p>
         </div>
-
       </section>
-
     </main>
   )
 }
