@@ -17,7 +17,7 @@ export default function Order({order}: OrderPropsType) {
 
   const date = () => {
     const dateFromServer = order.createdAt
-    return <FormattedDate date={new Date(dateFromServer)} className='text text_type_main-default text_color_inactive'/>
+    return <FormattedDate date={new Date(dateFromServer)} className='font-jet text-[14px] leading-5 lg:text-[16px] lg:leading-6 text_color_inactive'/>
   }
 
   let url: string = ""
@@ -32,9 +32,9 @@ export default function Order({order}: OrderPropsType) {
   return (
     <li>
       <Link href={url}>
-        <div className="flex flex-col items-center p-[24px] bg-[#1c1c21] rounded-[40px] gap-6">
+        <div className="flex flex-col items-center p-[16px] lg:p-[24px] bg-[#1c1c21] rounded-[40px] gap-4 lg:gap-6">
           <div className="flex justify-between w-full">
-            <p className="text text_type_digits-default">
+            <p className="font-jet leading-8 text-[22px] lg:text-[28px]">
               {`#${order.number}`}
             </p>
             {
@@ -44,7 +44,7 @@ export default function Order({order}: OrderPropsType) {
           {
             pathname === '/feed'
             &&
-            <p className="w-full text-left text text_type_main-medium">
+            <p className="w-full text-left font-jet text-[20px] leading-6 lg:text-[24px] lg:leading-8">
               {order.name}
             </p>
           }
@@ -52,10 +52,10 @@ export default function Order({order}: OrderPropsType) {
             pathname === '/profile/orders'
             &&
             <div className='flex flex-col gap-2 w-full '>
-              <p className="w-full text-left text text_type_main-medium">
+              <p className="w-full text-left font-jet text-[20px] leading-6 lg:text-[24px] lg:leading-8">
                 {order.name}
               </p>
-              <p className="text text_type_main-default">
+              <p className="font-jet text-[14px] leading-5 lg:text-[16px] lg:leading-6">
                 {order.status === 'done' ? 'Создан' : 'Готовится'}
               </p>
             </div>
@@ -69,8 +69,8 @@ export default function Order({order}: OrderPropsType) {
                     const zIndex = 6 - index
                     return (
                       <li 
-                        className='w-[64px] h-[64px] bg-[#131316] bg-no-repeat bg-center bg-[size:115px_64px] 
-                        rounded-[100px] border-2 border-solid border-[#801AB2] first:ml-0 ml-[-20px]' 
+                        className='w-[32px] h-[32px] sm:w-[64px] sm:h-[64px] bg-[#131316] bg-no-repeat bg-center bg-[size:57px_32px] 
+                        sm:bg-[size:115px_64px] rounded-[100px] border-2 border-solid border-[#801AB2] first:ml-0 ml-[-10px] sm:ml-[-20px]' 
                         key={index} 
                         style={{zIndex: zIndex, backgroundImage: `url(${item.image_mobile})`}}>
                       </li>
@@ -84,8 +84,8 @@ export default function Order({order}: OrderPropsType) {
                 &&
                 (
                   <li 
-                    className='flex justify-center items-center relative w-[64px] h-[64px] bg-[#131316] bg-no-repeat bg-center bg-[size:115px_64px] 
-                    rounded-[100px] border-2 border-solid border-[#801AB2] first:ml-0 ml-[-20px] after:content-[""] after:block after:w-[64px]
+                    className='flex justify-center items-center relative w-[32px] h-[32px] sm:w-[64px] sm:h-[64px] bg-[#131316] bg-no-repeat bg-center bg-[size:57px_32px] 
+                    sm:bg-[size:115px_64px] rounded-[100px] border-2 border-solid border-[#801AB2] first:ml-0 ml-[-10px] sm:ml-[-20px] after:content-[""] after:block after:w-[64px]
                     after:h-[64px] after:rounded-[100px] after:absolute after:top-0 after:left-0 after:z-10 after:bg-[#1C1C21] after:opacity-60' 
                     style={{zIndex: 1, backgroundImage: `url(${selectedIngrediences[5].image_mobile})`}}
                   >
@@ -97,7 +97,7 @@ export default function Order({order}: OrderPropsType) {
               } 
             </ul>
             <div className='flex items-center gap-2'>
-              <p className="text text_type_digits-default">{orderPrice}</p>
+              <p className="font-ice leading-6 text-[22px] sm:text-[28px]">{orderPrice}</p>
               <CurrencyIcon type="primary" />
             </div>
           </div>

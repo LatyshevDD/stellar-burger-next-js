@@ -4,7 +4,6 @@ import { useEffect, useState } from "react"
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components"
 import { useAppSelector, useAppDispatch } from "@/redux/store"
 import dynamic from "next/dynamic"
-import { useResize } from "@/utils/hooks"
 
 const Order = dynamic(
   () => import('../../components/order/order'),
@@ -26,7 +25,6 @@ export default function Feed() {
 
   const { orders, total, totalToday} = useAppSelector(state => state.feedData)
   const dispatch = useAppDispatch()
-  const width = useResize()
   const [tab, setTab] = useState('Заказы')
 
   useEffect(
@@ -41,11 +39,11 @@ export default function Feed() {
 
       {/* Секция с информацией о заказах и ингридиентах */}
       <section className="flex flex-col overflow-hidden w-full lg:w-[48%]">
-        <p className="font-jet text-center leading-8 md:text-left md:leading-10 text-[28px] md:text-[36px] mt-[16px] mb-[8px] md:mt-[40px] md:mb-[20px]">
+        <p className="font-jet text-center leading-8 lg:text-left lg:leading-10 text-[28px] lg:text-[36px] mt-[16px] mb-[8px] lg:mt-[40px] lg:mb-[20px]">
           Лента заказов
         </p>
         {/* Навигационное меню для ширины экрана менее 1024px(lg) */}
-        <nav className="grid grid-cols-2 lg:hidden">
+        <nav className="grid grid-cols-2 lg:hidden mb-[20px]">
           <Tab 
             value="Заказы" 
             active={tab === "Заказы"} 
@@ -61,7 +59,7 @@ export default function Feed() {
             Статистика
           </Tab>
         </nav>
-        <ul className="custom-scroll flex flex-col gap-4 pr-2 overflow-auto overflow-x-hidden">
+        <ul className={`${tab === "Заказы" ? "flex" : "hidden"} custom-scroll lg:flex flex-col gap-4 lg:pr-2 overflow-auto overflow-x-hidden`}>
           {
             orders.length > 0
             &&
@@ -71,7 +69,7 @@ export default function Feed() {
       </section>
 
       {/* Секция со статистикой о заказах */}
-      <section className="flex flex-col gap-[60px] w-full lg:w-[50%] mt-[40px]">
+      <section className={`${tab === "Статистика" ? "flex" : "hidden"} lg:flex flex-col gap-[60px] w-full lg:w-[50%] mt-[40px]`}>
         <div className="flex gap-[36px] overflow-hidden h-[206px]">
           <div className="flex flex-col gap-6 w-[50%]">
             <p className="font-jet text-[24px] leading-8">
