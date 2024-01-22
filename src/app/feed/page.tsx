@@ -35,7 +35,7 @@ export default function Feed() {
   )
 
   return (
-    <main className='flex flex-col lg:flex-row lg:pb-10 gap-16 xl:w-[80%] mx-auto h-[calc(100vh-64px)] xl:h-[calc(100vh-102px)]'>
+    <main className='flex flex-col lg:flex-row lg:pb-10 lg:gap-16 xl:w-[80%] mx-auto h-[calc(100vh-64px)] xl:h-[calc(100vh-102px)]'>
 
       {/* Секция с информацией о заказах и ингридиентах */}
       <section className="flex flex-col overflow-hidden w-full lg:w-[48%]">
@@ -69,31 +69,31 @@ export default function Feed() {
       </section>
 
       {/* Секция со статистикой о заказах */}
-      <section className={`${tab === "Статистика" ? "flex" : "hidden"} lg:flex flex-col gap-[60px] w-full lg:w-[50%] mt-[40px]`}>
+      <section className={`${tab === "Статистика" ? "flex" : "hidden"} lg:flex flex-col gap-[24px] lg:gap-[60px] w-full lg:w-[50%] lg:mt-[40px] px-2 lg:px-0`}>
         <div className="flex gap-[36px] overflow-hidden h-[206px]">
           <div className="flex flex-col gap-6 w-[50%]">
-            <p className="font-jet text-[24px] leading-8">
+            <p className="font-jet text-[20px] leading-6 lg:text-[24px] lg:leading-8">
               Готовы:
             </p>
-            <div className='grid grid-flow-col gap-2 grid-cols-[repeat(auto-fill,72px)] grid-rows-[repeat(10,auto)] h-[73%] overflow-auto'>
+            <div className='grid grid-flow-col gap-2 grid-cols-[repeat(auto-fill,55px)] lg:grid-cols-[repeat(auto-fill,72px)] grid-rows-[repeat(10,auto)] h-[73%] overflow-auto'>
               {
                 orders.map(order => {
                   if(order.status === 'done') {
-                    return <p className="font-ice leading-6 text-[28px] text-[#00CCCC]" key={order._id}>{order.number}</p>
+                    return <p className="font-ice leading-6 text-[22px] lg:text-[28px] text-[#00CCCC]" key={order._id}>{order.number}</p>
                   }
                 })
               }
             </div>
           </div>
           <div className="flex flex-col gap-6 w-[50%]">
-            <p className="font-jet text-[24px] leading-8">
+            <p className="font-jet text-[20px] leading-6 lg:text-[24px] lg:leading-8">
               В работе:
             </p>
-            <div className='grid grid-flow-col gap-2 grid-cols-[repeat(auto-fill,72px)] grid-rows-[repeat(10,auto)] h-[73%] overflow-auto'>
+            <div className='grid grid-flow-col gap-2 grid-cols-[repeat(auto-fill,55px)] lg:grid-cols-[repeat(auto-fill,72px)] grid-rows-[repeat(10,auto)] h-[73%] overflow-auto'>
               {
                 orders.map(order => {
                   if(order.status !== 'done') {
-                    return <p className="font-ice leading-6 text-[28px]" key={order._id}>{order.number}</p>
+                    return <p className="font-ice leading-6 text-[22px] lg:text-[28px]" key={order._id}>{order.number}</p>
                   }
                 })
               }
@@ -101,16 +101,20 @@ export default function Feed() {
           </div>
         </div>
         <div className='flex flex-col'>
-          <p className='font-jet text-[24px] leading-8'>
+          <p className='font-jet text-[20px] leading-6 lg:text-[24px] lg:leading-8'>
               Выполнено за все время:
           </p>
-          <p className="font-ice text-[144px] leading-[120px] [text-shadow:0px_4px_32px_rgba(51,51,255,0.50),0px_0px_8px_rgba(51,51,255,0.25),0px_0px_16px_rgba(51,51,255,0.25)]">{total}</p>
+          <p className="font-ice text-[72px] leading-[80px] lg:text-[144px] lg:leading-[120px] [text-shadow:0px_4px_32px_rgba(51,51,255,0.50),0px_0px_8px_rgba(51,51,255,0.25),0px_0px_16px_rgba(51,51,255,0.25)]">
+            {total}
+          </p>
         </div>
         <div className='flex flex-col'>
-          <p className='font-jet text-[24px] leading-8'>
+          <p className='font-jet text-[20px] leading-6 lg:text-[24px] lg:leading-8'>
               Выполнено за сегодня:
           </p>
-          <p className="font-ice text-[144px] leading-[120px] [text-shadow:0px_4px_32px_rgba(51,51,255,0.50),0px_0px_8px_rgba(51,51,255,0.25),0px_0px_16px_rgba(51,51,255,0.25)]">{totalToday}</p>
+          <p className="font-ice text-[72px] leading-[80px] lg:text-[144px] lg:leading-[120px] [text-shadow:0px_4px_32px_rgba(51,51,255,0.50),0px_0px_8px_rgba(51,51,255,0.25),0px_0px_16px_rgba(51,51,255,0.25)]">
+            {totalToday}
+          </p>
         </div>
       </section>
     </main>
