@@ -1,8 +1,8 @@
 'use client'
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components"
-import { useAppSelector, useAppDispatch } from "@/redux/store"
+import { useAppSelector } from "@/redux/store"
 import dynamic from "next/dynamic"
 
 const Order = dynamic(
@@ -24,15 +24,7 @@ const Order = dynamic(
 export default function Feed() {
 
   const { orders, total, totalToday} = useAppSelector(state => state.feedData)
-  const dispatch = useAppDispatch()
   const [tab, setTab] = useState('Заказы')
-
-  useEffect(
-    () => { 
-      dispatch({type: 'FEED_WS_CONNECTION_START', payload: 'wss://norma.nomoreparties.space/orders/all'})
-    },
-    [dispatch]
-  )
 
   return (
     <main className='flex flex-col lg:flex-row lg:pb-10 lg:gap-16 xl:w-[80%] mx-auto h-[calc(100vh-64px)] xl:h-[calc(100vh-102px)]'>
