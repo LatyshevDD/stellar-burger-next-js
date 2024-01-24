@@ -209,5 +209,13 @@ export function ChangeUserWithRefreshRequest(data: {name: string, login: string,
 
 
 export function getOrder(number: string) {
-  return requestApi<GetOrderRequestType>(`${config.orderUrl}/${number}`, {method: 'GET',})
+  return requestApi<GetOrderRequestType>(`${config.orderUrl}/${number}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Credentials': 'true',
+    }
+  })
 }

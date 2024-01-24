@@ -46,7 +46,10 @@ export default function FeedModal() {
             />
           </button>
         </div>
-        <div className="self-center">
+        <p className="font-jet text-[28px] font-bold leading-8 px-2 mb-[32px]">
+          Детали заказа
+        </p>
+        <div className="w-full self-center">
           <OrderSymmary modal={true}/>
         </div>
       </div>
