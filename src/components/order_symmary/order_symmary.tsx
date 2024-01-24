@@ -8,7 +8,7 @@ import { getOrder } from "@/utils/api"
 import { useParams } from "next/navigation"
 import { IngredientType, WebSocketOrderType } from "@/types/types"
 
-export default function OrderID() {
+export default function OrderSymmary({modal}: {modal: boolean}) {
 
   const params = useParams()
   const { orderID } = params
@@ -39,7 +39,7 @@ export default function OrderID() {
   }
 
   return (
-    <section className="flex flex-col w-[35%] h-[57%]">
+    <section className={`flex flex-col ${modal ? 'w-full max-h-[650px] p-10' : 'w-[35% h-[57%]]'}`}>
       <p className="font-ice text-center text-[28px] leading-6 mb-10">
         {`#${order.data != null && order.data.number}`}
       </p>
@@ -52,7 +52,7 @@ export default function OrderID() {
       <p className="font-jet text-[24px] font-bold leading-8 mb-6">
         Состав:
       </p>
-      <ul className="h-[52%] flex flex-col gap-4 overflow-auto overflow-x-hidden mb-10 custom-scroll">
+      <ul className="max-h-[320px] flex flex-col gap-4 overflow-auto overflow-x-hidden mb-10 custom-scroll">
         {
           selectedIngrediences
           &&

@@ -47,7 +47,7 @@ export default function Modal({children, onClose}: ModalPropsType) {
 
   return (
     <section className='absolute top-0 left-0 w-screen h-screen flex justify-center items-center z-10 bg-[#00000099]'>
-      <div className='relative bg-[#1C1C21] border-solid border-[#4c4cff33] rounded-[40px]' ref={modal}>
+      <div className='relative bg-[#1C1C21] border-solid border-[#4c4cff33] rounded-[40px] max-w-[52%] max-h-[85%]' ref={modal}>
         {children}
         <button 
         className='flex justify-center items-center bg-transparent cursor-default transition-opacity absolute top-[60px] 

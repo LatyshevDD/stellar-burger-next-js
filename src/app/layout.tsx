@@ -22,11 +22,12 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-  children, order, ingredients
+  children, order, ingredients, modals
 }: {
   children: React.ReactNode,
   order: React.ReactNode,
-  ingredients: React.ReactNode
+  ingredients: React.ReactNode,
+  modals: React.ReactNode
 }) {
   return (
     <Providers>
@@ -36,6 +37,7 @@ export default function RootLayout({
             {children}
             {order}
             {ingredients}
+            {modals}
         </body>
       </html>
     </Providers>

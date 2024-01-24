@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic"
 
-const OrderID = dynamic(
-  () => import('../../../components/orderID/orderID'),
+const OrderSymmary = dynamic(
+  () => import('../../../components/order_symmary/order_symmary'),
   {
     loading: () => {
       return (
@@ -20,7 +20,7 @@ export default function OrderInformation() {
 
   return (
     <div className="flex justify-center items-center h-[calc(100vh-64px)] xl:h-[calc(100vh-102px)]">
-      <OrderID />
+      <OrderSymmary modal={false} />
     </div>
   )
       
