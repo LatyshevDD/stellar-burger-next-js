@@ -52,7 +52,7 @@ export default function OrderSymmary({modal}: {modal: boolean}) {
       <p className="font-jet text-[20px] xl:text-[24px] font-bold leading-6 xl:leading-8 mb-6">
         Состав:
       </p>
-      <ul className="max-h-[178px] sm:max-h-[280px] xl:max-h-[320px] flex flex-col gap-2 xl:gap-4 overflow-auto overflow-x-hidden mb-5 xl:mb-10 xl:custom-scroll">
+      <ul className="max-h-[178px] sm:max-h-[280px] xl:max-h-[320px] flex flex-col gap-2 xl:gap-4 overflow-auto overflow-x-hidden xl:mb-5 xl:mb-10 xl:custom-scroll">
         {
           selectedIngrediences
           &&
@@ -60,16 +60,16 @@ export default function OrderSymmary({modal}: {modal: boolean}) {
             const { count, indexes } = getCountOfIngredientWithIndexes(item, array)
             if(count > 1 && index === indexes[0]) {
               return (
-                <li className="flex gap-4" key={index}>
+                <li className="flex gap-1 xl:gap-4" key={index}>
                   <div 
                     className="w-[32px] h-[32px] xl:w-[64px] xl:h-[64px] rounded-[100px] bg-[#131316] bg-no-repeat bg-center 
                     bg-[size:57px_32px] xl:bg-[size:115px_64px] border-2 border-solid border-[#801AB2]" 
                     style={{backgroundImage: `url(${item.image_mobile})`}}>
                   </div>
-                  <p className="grow self-center font-jet text-[14px] xl:text-[16px] font-normal leading-5 xl:leading-6">
+                  <p className="grow basis-[189px] xl:basis-auto self-center font-jet text-[14px] xl:text-[16px] font-normal leading-5 xl:leading-6">
                     {item.name}
                   </p>
-                  <div className="flex gap-2 self-center justify-end pr-6">
+                  <div className="flex gap-2 self-center justify-end pr-0 xl:pr-6">
                     <p className="font-ice text-[22px] xl:text-[28px] font-normal leading-6">
                       {`${count}x${item.price}`}
                     </p>
@@ -82,16 +82,16 @@ export default function OrderSymmary({modal}: {modal: boolean}) {
               return null
             }
             return (
-              <li className="flex gap-4" key={index}>
+              <li className="flex gap-1 xl:gap-4" key={index}>
                 <div 
-                  className="w-[32px] h-[32px xl:w-[64px] xl:h-[64px] rounded-[100px] bg-[#131316] bg-no-repeat bg-center 
+                  className="w-[32px] h-[32px] xl:w-[64px] xl:h-[64px] rounded-[100px] bg-[#131316] bg-no-repeat bg-center 
                   bg-[size:57px_32px] xl:bg-[size:115px_64px] border-2 border-solid border-[#801AB2]" 
                   style={{backgroundImage: `url(${item.image_mobile})`}}>
                 </div>
-                <p className="grow self-center font-jet text-[16px] font-normal leading-6">
+                <p className="grow basis-[189px] xl:basis-auto self-center font-jet text-[14px] xl:text-[16px] font-normal leading-5 xl:leading-6">
                   {item.name}
                 </p>
-                <div className="flex gap-2 self-center justify-end pr-6">
+                <div className="flex gap-2 self-center justify-end pr-0 xl:pr-6">
                   <p className="font-ice text-[22px] xl:text-[28px] font-normal leading-6">
                     {`${count}x${item.price}`}
                   </p>
@@ -113,7 +113,7 @@ export default function OrderSymmary({modal}: {modal: boolean}) {
       </div>
 
       {/* Строка с итоговой стоимостью для малых разрешений */}
-      <div className={`xl:hidden flex justify-between ${modal ? "bg-[#1C1C21] fixed bottom-0 w-full self-center" : ""}`}>
+      <div className={`xl:hidden flex justify-between ${modal ? "bg-[#1C1C21] w-full self-center" : ""}`}>
         {date()}
         <div className="flex gap-2">
           <p className="font-ice text-[22px] xl:text-[28px] font-normal leading-6">
