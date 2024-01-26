@@ -27,7 +27,7 @@ export default function Feed() {
   const [tab, setTab] = useState('Заказы')
 
   return (
-    <main className='flex flex-col lg:flex-row lg:pb-10 lg:gap-16 xl:w-[80%] mx-auto h-[calc(100vh-64px)] xl:h-[calc(100vh-102px)]'>
+    <main className='flex flex-col lg:flex-row lg:pb-10 lg:gap-16 xl:w-[80%] mx-auto h-[calc(100vh-64px)] xl:h-[calc(100vh-102px)] overflow-hidden'>
 
       {/* Секция с информацией о заказах и ингридиентах */}
       <section className="flex flex-col overflow-hidden w-full lg:w-[48%]">
@@ -61,8 +61,8 @@ export default function Feed() {
       </section>
 
       {/* Секция со статистикой о заказах */}
-      <section className={`${tab === "Статистика" ? "flex" : "hidden"} lg:flex flex-col gap-[24px] lg:gap-[60px] w-full lg:w-[50%] lg:mt-[40px] px-2 lg:px-0`}>
-        <div className="flex gap-[36px] overflow-hidden h-[206px]">
+      <section className={`${tab === "Статистика" ? "flex" : "hidden"} lg:flex flex-col gap-[24px] lg:gap-[60px] w-full lg:w-[50%] lg:mt-[40px] px-2 lg:px-0 overflow-auto`}>
+        <div className="flex gap-[36px] max-h-[206px] lg:overflow-hidden lg:max-h-[176px]">
           <div className="flex flex-col gap-6 w-[50%]">
             <p className="font-jet text-[20px] leading-6 lg:text-[24px] lg:leading-8">
               Готовы:
