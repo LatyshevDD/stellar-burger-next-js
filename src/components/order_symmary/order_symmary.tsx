@@ -23,7 +23,7 @@ export default function OrderSymmary({modal}: {modal: boolean}) {
       .then(res => {
         setOrder({...order, data: res.orders[0]})})
     }
-  }, [order, orderID])
+  }, [])
 
   let selectedIngrediences: IngredientType[] = [], orderPrice: number = 0
   if(order.data && ingrediences != null) {
