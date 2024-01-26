@@ -22,7 +22,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
 
   useEffect(() => dispatch(checkUserAuth()), [dispatch])
 
-  if(pathname !== '/feed') {
+  if(!/^\/feed/.test(pathname)) {
     dispatch({type: 'FEED_WS_CONNECTION_STOP'})
   }
 
