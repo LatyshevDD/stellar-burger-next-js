@@ -52,7 +52,7 @@ export default function OrderSymmary({modal}: {modal: boolean}) {
       <p className="font-jet text-[20px] xl:text-[24px] font-bold leading-6 xl:leading-8 mb-6">
         Состав:
       </p>
-      <ul className="max-h-[178px] sm:max-h-[280px] xl:max-h-[320px] flex flex-col gap-2 xl:gap-4 overflow-auto overflow-x-hidden xl:mb-5 xl:mb-10 xl:custom-scroll">
+      <ul className="max-h-[178px] sm:max-h-[280px] xl:max-h-[320px] flex flex-col gap-2 xl:gap-4 overflow-auto overflow-x-hidden xl:mb-5 xl:mb-10 custom-scroll">
         {
           selectedIngrediences
           &&
@@ -102,7 +102,7 @@ export default function OrderSymmary({modal}: {modal: boolean}) {
           })
         }
       </ul>
-      <div className="hidden xl:block flex justify-between">
+      <div className="hidden xl:flex justify-between">
         {date()}
         <div className="flex gap-2">
           <p className="font-ice text-[22px] xl:text-[28px] font-normal leading-6">

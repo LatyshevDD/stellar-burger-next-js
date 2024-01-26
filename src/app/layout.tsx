@@ -22,12 +22,12 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-  children, order, ingredients, modals
+  children, orderModal, ingredientsModal, feedModal
 }: {
   children: React.ReactNode,
-  order: React.ReactNode,
-  ingredients: React.ReactNode,
-  modals: React.ReactNode
+  orderModal: React.ReactNode,
+  ingredientsModal: React.ReactNode,
+  feedModal: React.ReactNode
 }) {
   return (
     <Providers>
@@ -35,9 +35,9 @@ export default function RootLayout({
         <body className='container mx-auto'>
             <AppHeader />
             {children}
-            {order}
-            {ingredients}
-            {modals}
+            {orderModal}
+            {ingredientsModal}
+            {feedModal}
         </body>
       </html>
     </Providers>
