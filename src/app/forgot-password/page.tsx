@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react"
 import { Button, EmailInput } from "@ya.praktikum/react-developer-burger-ui-components"
-import { forgotPasswordRequest } from "@/utils/api"
+import { forgotPasswordRequest } from "@/utils//api"
 import { useRouter } from "next/navigation"
 import onlyUnAuth from "@/components/onlyUnAuth/onlyUnAuth"
 import Link from "next/link"

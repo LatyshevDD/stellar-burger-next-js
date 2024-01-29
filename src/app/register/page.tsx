@@ -3,7 +3,7 @@
 import { useState, useCallback } from "react"
 import Link from "next/link"
 import { Button, EmailInput, PasswordInput, Input } from "@ya.praktikum/react-developer-burger-ui-components"
-import { registerRequest } from "@/utils/api"
+import { registerRequest } from "@/utils//api"
 import onlyUnAuth from "@/components/onlyUnAuth/onlyUnAuth"
 
 

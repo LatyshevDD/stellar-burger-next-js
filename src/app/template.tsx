@@ -20,7 +20,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
     dispatch({type: 'FETCH_INGREDIENCES'})
   }, [dispatch])
 
-  useEffect(() => dispatch(checkUserAuth()), [dispatch])
+  // useEffect(() => dispatch(checkUserAuth()), [dispatch])
 
   if(!/^\/feed/.test(pathname)) {
     dispatch({type: 'FEED_WS_CONNECTION_STOP'})

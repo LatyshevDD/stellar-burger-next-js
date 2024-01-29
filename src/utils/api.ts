@@ -1,15 +1,14 @@
-import {OrderType, RefreshTokenRequestType, GetIngredienceRequestType, RequestWithUserType, RefreshUserInfoRequestType, GetUserRequestType, ChangeUserDataType, GetOrderRequestType } from "../types/types";
+'use client'
+
+import { OrderType, RefreshTokenRequestType, GetIngredienceRequestType, RequestWithUserType, RefreshUserInfoRequestType, GetUserRequestType,ChangeUserDataType, GetOrderRequestType } from "../types/types";
 
 const config = {
   ingredienceUrl: 'https://norma.nomoreparties.space/api/ingredients',
   orderUrl: 'https://norma.nomoreparties.space/api/orders'
 };
 
-
-let authorization = localStorage.getItem('accessToken') ?? "Error"
-let authorizationRequestHeaders: HeadersInit = new Headers()
-authorizationRequestHeaders.append('Content-Type', 'application/json')
-authorizationRequestHeaders.append( 'authorization', authorization)
+let authorization: string
+let authorizationRequestHeaders: Headers
 
 
 function requestApi<T>(url: string, options: RequestInit): Promise<T> {
@@ -28,6 +27,12 @@ export function getIngredience() {
 }
 
 export function getOrderDetails(data: String[]) {
+
+  authorization = localStorage.getItem('accessToken') ?? "Error"
+  authorizationRequestHeaders = new Headers()
+  authorizationRequestHeaders.append('Content-Type', 'application/json')
+  authorizationRequestHeaders.append( 'authorization', authorization)
+
   return requestApi<OrderType>(config.orderUrl, {
     method: 'POST',
     body: JSON.stringify({
@@ -173,6 +178,12 @@ export function resetPasswordRequest(data:{password: string, token: string}) {
 }
 
 export function changeUserRequest(data: ChangeUserDataType) {
+
+  authorization = localStorage.getItem('accessToken') ?? "Error"
+  authorizationRequestHeaders = new Headers()
+  authorizationRequestHeaders.append('Content-Type', 'application/json')
+  authorizationRequestHeaders.append( 'authorization', authorization)
+
   return requestApi<RequestWithUserType>('https://norma.nomoreparties.space/api/auth/user', {
     method: 'PATCH',
     body: JSON.stringify({

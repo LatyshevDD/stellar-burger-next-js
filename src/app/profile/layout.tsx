@@ -21,13 +21,13 @@ export default function ProfileLayout({children}: {children: React.ReactNode}) {
       await dispatch(logout())
       router.replace("/login")
     },
-    [dispatch]
+    [dispatch, router]
   )
   
   return (
-    <main className="flex flex-col mt-10 pl-4 lg:flex-row lg:gap-[60px] xl:w-[80%] mx-auto h-[calc(100vh-64px)] xl:h-[calc(100vh-102px)] overflow-hidden">
+    <main className="flex flex-col pt-10 pl-4 lg:flex-row lg:gap-[60px] xl:w-[80%] mx-auto h-[calc(100vh-64px)] xl:h-[calc(100vh-102px)] overflow-hidden">
       <section className="flex flex-col gap-[80px] w-[26%]">
-        <nav className="flex flex-col gap-10">
+        <nav className="flex flex-col gap-10 pt-[80px]">
           <Link 
             href="/profile" 
             className={`font-jet text-[24px] font-bold leading-8 ${pathname === "/profile" ? "text-[#F2F2F3]" : "text-[#8585AD]"}`}
@@ -48,6 +48,20 @@ export default function ProfileLayout({children}: {children: React.ReactNode}) {
             Выход
           </Link>
         </nav>
+        {
+          pathname === "/profile"
+          &&
+          <p className="font-jet text-16 font-normal leading-6 text-[#8585AD]">
+            В этом разделе вы можете изменить свои персональные данные
+          </p>
+        }
+        {
+          pathname === "/profile/orders"
+          &&
+          <p className="font-jet text-16 font-normal leading-6 text-[#8585AD]">
+            В этом разделе вы можете просмотреть свою историю заказов
+          </p>
+        }
       </section>
       {children}
     </main>
