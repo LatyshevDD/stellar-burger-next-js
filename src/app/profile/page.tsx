@@ -101,9 +101,12 @@ export default function Profile() {
 
   return (
     <form 
-      className="flex flex-col pt-[80px] gap-6"
+      className="flex flex-col items-center lg:items-start pt-0 lg:pt-[80px] gap-5 lg:gap-6"
       onSubmit={handleSubmit}
     >
+      <p className="font-jet pb-2 text-[28px] font-bold leading-8 lg:hidden">
+        Профиль
+      </p>
       <Input
         ref={nameRef} 
         type={'text'} 
@@ -118,6 +121,7 @@ export default function Profile() {
             setName({...name, value: e.target.value})
           }   
         }
+        extraClass="!w-[304px] flex sm:block sm:!w-[480px]"
       />
       <Input
         ref={loginRef} 
@@ -133,6 +137,7 @@ export default function Profile() {
             setLogin({...login, value: e.target.value})
           }
         }
+        extraClass="!w-[304px] flex sm:block sm:!w-[480px]"
       />
       <Input
         ref={passwordRef} 
@@ -148,6 +153,7 @@ export default function Profile() {
             setPassword({...password, value: e.target.value})
           }
         }
+        extraClass="!w-[304px] flex sm:block sm:!w-[480px]"
       />
       {
         buttonsState

@@ -15,7 +15,7 @@ export const socketMiddleware = (wsConfig: WSConfigType): Middleware<{}, RootSta
     const { type, payload } = action
     const { dispatch } = store
     
-    if (type === onStart && !socket) {
+    if (type === onStart) {
       socket = new WebSocket(payload)
       isConnected = true
     }
