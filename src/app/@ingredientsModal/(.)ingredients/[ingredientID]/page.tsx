@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation"
 import { useCallback } from "react"
 import close_image from '../../../../_images/modal_close.png'
 
-const IngredientDetails = dynamic(() => import('@/components/ingredient_details/ingredient_details'))
+const IngredientDetails = dynamic(() => import('@/components/ingredient_details/ingredient_details'), {ssr: false})
 
 export default function Ingredient() {
 

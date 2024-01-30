@@ -3,6 +3,7 @@ import dynamic from "next/dynamic"
 const OrderSymmary = dynamic(
   () => import('../../../components/order_symmary/order_symmary'),
   {
+    ssr: false,
     loading: () => {
       return (
         <div className="w-full h-full flex gap-2 justify-center items-center">

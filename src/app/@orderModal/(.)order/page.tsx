@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation"
 import { useCallback } from "react"
 import close_image from '../../../_images/modal_close.png'
 
-const OrderDetails = dynamic(() => import('@/components/order_details/order_details'))
+const OrderDetails = dynamic(() => import('@/components/order_details/order_details'),{ssr: false})
 
 export default function Order() {
 

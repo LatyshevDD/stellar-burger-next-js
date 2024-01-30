@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic"
 import Image from "next/image"
 
-const IngredientDetails = dynamic(() => import('@/components/ingredient_details/ingredient_details'))
+const IngredientDetails = dynamic(() => import('@/components/ingredient_details/ingredient_details'), {ssr: false})
 
 export default function Ingredient() {
 
