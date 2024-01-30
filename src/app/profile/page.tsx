@@ -34,7 +34,7 @@ export default function Profile() {
         setTimeout(() => nameRef.current && nameRef.current.focus(), 100)
       } 
     },
-    [nameRef]
+    [nameRef, name]
   )
 
   const handleNameCloseClick = useCallback(
@@ -42,7 +42,7 @@ export default function Profile() {
       setName({...name, active: true})
       setButtonsState(false) 
     },
-    []
+    [name]
   )
 
   const handleLoginIconClick = useCallback(
@@ -52,7 +52,7 @@ export default function Profile() {
         setTimeout(() => loginRef.current && loginRef.current.focus(), 100)
       } 
     },
-    [loginRef]
+    [loginRef, login]
   )
 
   const handleLoginCloseClick = useCallback(
@@ -60,7 +60,7 @@ export default function Profile() {
       setLogin({...name, active: true})
       setButtonsState(false) 
     },
-    []
+    [name]
   )
 
   const handlePasswordIconClick = useCallback(
@@ -70,7 +70,7 @@ export default function Profile() {
         setTimeout(() => passwordRef.current && passwordRef.current.focus(), 100)
       } 
     },
-    [passwordRef]
+    [passwordRef, password]
   )
 
   const handlePasswordCloseClick = useCallback(
@@ -78,7 +78,7 @@ export default function Profile() {
       setPassword({...name, active: true})
       setButtonsState(false) 
     },
-    []
+    [name]
   )
 
   const handleCancelClick = useCallback(
@@ -88,7 +88,7 @@ export default function Profile() {
       setPassword({...password, value: ''})
       setButtonsState(false)
     },
-    []
+    [login, name, password]
   )
 
   const handleSubmit = useCallback(

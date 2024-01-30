@@ -18,16 +18,27 @@ export default function Template({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     dispatch({type: 'FETCH_INGREDIENCES'})
-  }, [dispatch])
+  }, [])
 
-  // useEffect(() => dispatch(checkUserAuth()), [dispatch])
+  useEffect(() => {dispatch(checkUserAuth())},[])
 
-  if(!/^\/feed/.test(pathname)) {
-    dispatch({type: 'FEED_WS_CONNECTION_STOP'})
-  }
+  useEffect(
+    () => {
+      if(!/^\/feed/.test(pathname)) {
+          dispatch({type: 'FEED_WS_CONNECTION_STOP'})
+        }
+    },
+    []
+  )
 
-  if(pathname !== '/profile/orders') {
-    dispatch({type: 'PROFILE_ORDERS_WS_CONNECTION_STOP'})
-  }
-  return <> {children} </>
+  useEffect(
+    () => {
+      if(!/^\/profile\/orders/.test(pathname)) {
+          dispatch({type: 'PROFILE_ORDERS_WS_CONNECTION_STOP'})
+        }
+    },
+    []
+  )
+
+  return <div> {children} </div>
 }

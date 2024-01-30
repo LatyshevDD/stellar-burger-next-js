@@ -1,3 +1,5 @@
+"use client"
+
 import BurgerIngredients from "@/components/burger_ingredients/burger_ingredients"
 import BurgerConstructor from "@/components/burger_constructor/burger_constructor"
 

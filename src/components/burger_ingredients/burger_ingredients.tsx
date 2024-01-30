@@ -5,11 +5,13 @@ import { Tab, Button, CurrencyIcon } from "@ya.praktikum/react-developer-burger-
 import { BUN, MAIN, SAUCE } from "@/utils/constants"
 import { useAppDispatch, useAppSelector } from "@/redux/store"
 import { openSmallBurgerConstructorMenu } from "@/redux/burgerDataSlice"
+// import Ingredient from "../ingredient/ingredient"
 import dynamic from "next/dynamic"
 
 const Ingredient = dynamic(
   () => import('../ingredient/ingredient'),
   {
+    ssr: false,
     loading: () => {
       return (
         <div className="w-full h-full flex gap-2 justify-center items-center">

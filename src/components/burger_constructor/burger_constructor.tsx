@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation"
 const BurgerIngredient = dynamic(
   () => import('../burger_ingredient/burger_ingredient'),
   {
+    ssr: false,
     loading: () => {
       return (
         <div className="w-full h-full flex gap-2 justify-center items-center">

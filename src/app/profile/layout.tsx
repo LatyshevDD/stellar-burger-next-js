@@ -30,9 +30,11 @@ export default function ProfileLayout({children}: {children: React.ReactNode}) {
         <nav className="flex flex-col gap-10 pt-[80px]">
           <Link 
             href="/profile" 
-            className={`font-jet text-[24px] font-bold leading-8 ${pathname === "/profile" ? "text-[#F2F2F3]" : "text-[#8585AD]"}`}
+            className={`${pathname === "/profile" ? "text-[#F2F2F3]" : "text-[#8585AD]"}`}
           >
+            <p className="font-jet text-[24px] font-bold leading-8">
             Профиль
+            </p>  
           </Link>
           <Link 
             href="/profile/orders" 

@@ -15,7 +15,7 @@ export default function FeedLayout({
     () => { 
       dispatch({type: 'FEED_WS_CONNECTION_START', payload: 'wss://norma.nomoreparties.space/orders/all'})
     },
-    [dispatch]
+    []
   )
 
   return (
