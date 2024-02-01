@@ -3,11 +3,13 @@
 import { useState, useEffect } from "react"
 import { useAppSelector } from "@/redux/store"
 import { redirect } from "next/navigation"
+import { usePathname } from "next/navigation"
 
 export default function ProfileTemplate({ children }: { children: React.ReactNode }) {
 
   const user =  useAppSelector((store) => store.userData.user)
   const [isMounted, setIsMounted] = useState(false)
+  const pathname = usePathname()
 
   useEffect(
     () => {
@@ -21,8 +23,8 @@ export default function ProfileTemplate({ children }: { children: React.ReactNod
     []
   )
   
-  if(!user) {
-    return redirect('/login')//настроить params для возврата к нужной странице после входа в систему
+  if(isMounted && !user) {
+    return redirect(`/login?from=${pathname}`)
   }
 
   return isMounted ? <> {children} </> : null

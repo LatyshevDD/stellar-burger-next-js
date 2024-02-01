@@ -23,7 +23,7 @@ export default function onlyUnAuth(Component: () => JSX.Element) {
       []
     )
     
-    if(user) {
+    if(isMounted && user) {
       return redirect('/')
     }
 
