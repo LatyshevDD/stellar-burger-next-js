@@ -57,7 +57,7 @@ export default function AppHeader() {
             <CloseIcon type='primary' onClick={() => setBurgerMenu(false)} />
           </div>
           <div className='flex justify-between my-3.5'>
-            <Link href='/profile' className='flex gap-2'>
+            <Link href='/profile' className='flex gap-2' onClick={() => setTimeout(() => setBurgerMenu(false), 1000)}>
               <ProfileIcon type={pathname === '/profile' ? 'primary' : 'secondary'} />
               <p className={`text text_type_main-default ml-2 ${pathname === '/profile' ? 'text-[rgba(242,242,243,1)]' : 'text-[rgba(133,133,173,1)]'} `}>
                 Личный кабинет
