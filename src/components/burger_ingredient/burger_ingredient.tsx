@@ -62,7 +62,7 @@ export default function BurgerIngredient({ingredientData, type}: IngredientProps
       {
         type === 'smallScreen' &&
         (
-          <li ref={preview} className={`${styles.scrollbar_none} opacity-100 flex overflow-x-scroll w-full snap-x`}>
+          <li ref={preview} className={`${styles.scrollbar_none} ${styles.container_snap} opacity-100 flex overflow-x-scroll w-full snap-x`}>
             <div className={`${isDragging ? 'opacity-0' : 'opacity-100'} flex w-full flex-none items-center gap-2 snap-end`} ref={drop}>
               <div ref={drag}>
                 <DragIcon type="primary"/>
