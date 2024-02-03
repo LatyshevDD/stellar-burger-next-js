@@ -49,7 +49,7 @@ export default function AppHeader() {
         </nav>
       </header>
       {/* Выпадающее меню на маленьких экранах */}
-      <nav className={`${burgerMenu ? 'translate-y-0' : 'translate-y-[-200%]'} flex flex-col pt-4 px-2 z-20 h-screen transition-all absolute top-0 container mx-auto bg-[#131316]`}>
+      <nav className={`${burgerMenu ? 'translate-y-0' : 'translate-y-[-200%]'} flex flex-col pt-4 px-2 z-20 h-full transition-all absolute top-0 container mx-auto bg-[#131316]`}>
           <div className='flex justify-between gap-2'>
             <p className="text text_type_main-medium">
               Меню
