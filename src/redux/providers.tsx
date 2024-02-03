@@ -2,13 +2,14 @@
 
 import { Provider } from "react-redux"
 import { store } from "./store"
-import { HTML5Backend } from "react-dnd-html5-backend"
-import { DndProvider } from "react-dnd"
+import { DndProvider } from 'react-dnd'
+import { MultiBackend } from 'react-dnd-multi-backend'
+import { HTML5toTouch } from 'rdndmb-html5-to-touch'
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <Provider store={store}>
-      <DndProvider backend={HTML5Backend}>
+      <DndProvider backend={MultiBackend} options={HTML5toTouch}>
         {children}
       </DndProvider>
     </Provider>
