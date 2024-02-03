@@ -67,7 +67,7 @@ export default function BurgerIngredient({ingredientData, type}: IngredientProps
               <div ref={drag}>
                 <DragIcon type="primary"/>
               </div>
-              <div className="flex justify-between items-center gap-2 border-b border-[#2F2F37] min-h-[72px] grow">
+              <div className={`${styles.noselect} flex justify-between items-center gap-2 border-b border-[#2F2F37] min-h-[72px] grow`}>
                 <Image 
                   src={ingredientData.image_mobile}
                   alt='Изображение ингридиента'
