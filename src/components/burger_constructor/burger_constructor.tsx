@@ -136,7 +136,7 @@ export default function BurgerConstructor() {
         </div>
       </section>
       {/* Секция для экранов с шириной менее 1280px */}
-      <section className={`${burgerData.smallBurgerConstructorMenu ? 'flex' : 'hidden'} flex-col xl:hidden h-screen absolute top-0 z-10 bg-[#131316] transition-all container mx-auto overflow-hidden`}>
+      <section className={`${burgerData.smallBurgerConstructorMenu ? 'flex' : 'hidden'} flex-col xl:hidden h-full absolute top-0 z-10 bg-[#131316] transition-all container mx-auto overflow-hidden`}>
         <div className='flex items-center justify-between px-2 py-4'>
           <p className="text text_type_main-medium">
             Заказ
