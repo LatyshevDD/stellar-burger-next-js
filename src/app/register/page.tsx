@@ -31,7 +31,7 @@ const Register = () => {
 
   return (
     <>
-      <main className='flex justify-center items-start sm:items-center h-[calc(100vh-64px)] xl:h-[calc(100vh-102px)]'>
+      <main className='flex justify-center items-start sm:items-center h-[var(--main-height-beforexl)] xl:h-[var(--main-height-overxl)]'>
         <form 
           className='flex flex-col items-center'
           onSubmit={handleSubmit}

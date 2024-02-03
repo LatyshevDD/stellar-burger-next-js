@@ -28,7 +28,7 @@ export default function Feed() {
   const [tab, setTab] = useState('Заказы')
 
   return (
-    <main className='flex flex-col lg:flex-row lg:pb-10 lg:gap-16 xl:w-[80%] mx-auto h-[calc(100vh-64px)] xl:h-[calc(100vh-102px)] overflow-hidden'>
+    <main className='flex flex-col lg:flex-row lg:pb-10 lg:gap-16 xl:w-[80%] mx-auto h-[var(--main-height-beforexl)] xl:h-[var(--main-height-overxl)] overflow-hidden'>
 
       {/* Секция с информацией о заказах и ингридиентах */}
       <section className="flex flex-col overflow-hidden w-full lg:w-[48%]">

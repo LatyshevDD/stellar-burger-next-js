@@ -20,7 +20,7 @@ const OrderSymmary = dynamic(
 export default function OrderInformation() {
 
   return (
-    <div className="flex justify-center items-center h-[calc(100vh-64px)] xl:h-[calc(100vh-102px)]">
+    <div className="flex justify-center items-center h-[var(--main-height-beforexl)] xl:h-[var(--main-height-overxl)]">
       <OrderSymmary modal={false} />
     </div>
   )

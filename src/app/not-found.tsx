@@ -4,7 +4,7 @@ import Link from "next/link"
 export default function NotFound() {
 
   return (
-    <main className='flex flex-col gap-5 justify-center items-center h-[calc(100vh-64px)] xl:h-[calc(100vh-102px)]'>
+    <main className='flex flex-col gap-5 justify-center items-center h-[var(--main-height-beforexl)] xl:h-[var(--main-height-overxl)]'>
       <p className="text text_type_main-large">
         Oops!
       </p>
