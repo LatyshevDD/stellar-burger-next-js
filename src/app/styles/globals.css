@@ -2,3 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --main-height-overxl: none;
+  --main-height-beforexl: none;
+}
+
