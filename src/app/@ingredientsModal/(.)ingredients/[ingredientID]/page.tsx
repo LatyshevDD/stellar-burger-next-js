@@ -24,7 +24,7 @@ export default function Ingredient() {
           <IngredientDetails fullWidth={false} />
         </Modal>
       </div>
-      <div className="container absolute top-0 flex flex-col z-10 xl:hidden h-screen bg-[#131316]">
+      <div className="container absolute top-0 flex flex-col z-10 xl:hidden h-full bg-[#131316]">
         <div className='flex items-center justify-end px-2 py-4'>
           <button onClick={onDismiss}>
             <Image
