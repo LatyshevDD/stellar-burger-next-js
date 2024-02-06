@@ -7,13 +7,15 @@ import { addBurgerIngredient, addBun } from '@/redux/burgerDataSlice'
 import { useCallback, useMemo } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useResize } from '@/utils/hooks'
 
 export default function Ingredient({ingredientData}: IngredientProps) {
 
   const dispatch = useAppDispatch()
 
   const burgerData = useAppSelector(state => state.burgerData)
-  
+  const width = useResize()
+
   let ingredientCount = useMemo(
     () => {
       if (ingredientData.type === 'bun') {
@@ -41,7 +43,7 @@ export default function Ingredient({ingredientData}: IngredientProps) {
   }))
 
   return (
-    <li className='flex flex-col items-center relative transition-opacity lg:hover:opacity-75' ref={null}>
+    <li className='flex flex-col items-center relative transition-opacity lg:hover:opacity-75' ref={width >= 1280 ? drag : null}>
       <Link className={`${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`} href={`/ingredients/${ingredientData._id}`}>
         <div className='flex justify-center'>
           <Image width={240} height={120} priority={true} src={ingredientData.image} alt={ingredientData.name} />
