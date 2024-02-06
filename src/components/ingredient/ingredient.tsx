@@ -41,7 +41,7 @@ export default function Ingredient({ingredientData}: IngredientProps) {
   }))
 
   return (
-    <li className='flex flex-col items-center relative transition-opacity lg:hover:opacity-75' ref={drag}>
+    <li className='flex flex-col items-center relative transition-opacity lg:hover:opacity-75' ref={null}>
       <Link className={`${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`} href={`/ingredients/${ingredientData._id}`}>
         <div className='flex justify-center'>
           <Image width={240} height={120} priority={true} src={ingredientData.image} alt={ingredientData.name} />
